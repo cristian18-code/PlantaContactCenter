@@ -1,0 +1,125 @@
+.bg-gradient-primari{
+  background:#043764;
+}
+a{
+  list-style:none;
+  text-decoration:none;
+}
+
+.total{
+  text-align: center;
+}
+#form{
+  background: #f1f2f3;
+  padding: 1.5%;
+  border-radius: 5px;
+  color: #000;
+  min-width: 350px;
+}
+.pusbar-reporting{
+  width: 100%;
+  background: rgb(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100vh;
+  color: #fff;
+  text-align: center;
+}
+.container-boxes{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+.container-boxes div{
+  cursor: pointer;
+}
+.container-boxes div span{
+  color: #000;
+  font-size: 30pt;
+}
+#close{
+  background: none;
+  font-size: 35pt;
+  color: white;
+  position: fixed;
+  right: 0px;
+  list-style: none !important;
+  text-decoration: none;
+  top: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+div#formulario_usuario{
+  width: 70%;
+  margin: auto;
+  min-width: 430px;
+}
+
+div#formulario_usuario form {
+    padding: 30px;
+    border: 1px solid #0505053b;
+    background-color: #fffefe;
+    border-radius: 10px;
+    box-shadow: -10px 10px 20px -10px rgba(0,0,0, 0.5);
+    margin-bottom: 2%;
+
+}
+div#formulario_usuario form label {
+    font-size: 18px;
+    float: left;
+    font-weight: 600;
+    color: #000000;
+}
+
+div#formulario_usuario form input[type=submit] {
+    border-radius: 5px;
+}
+#tipoRe{
+  height: 5vh;
+}
+
+ div#formulario_usuario form input[type=submit]:hover {
+    cursor:pointer;
+}
+textarea{
+  resize: none;
+}
+.msg_error{
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 25%;
+    font-size: 25pt;
+    z-index: 100000;
+    right: 1%;
+    top: 1%;
+    text-align: center;
+    position: absolute;
+  }
+  .msg_save{
+    background:#fff;
+    border-radius: 10px;
+    width: 25%;
+    padding: 10px;
+    font-size: 25pt;
+    z-index: 100000;
+    right: 1%;
+    top: 1%;
+    text-align: center;
+    position: absolute;
+  }
+  .success{
+    width: 40%;
+  }
+  .alerta div{
+    padding: 10px;
+    position: fixed;
+    background: rgba(0,0,0, 0.3);
+    width: 100%;
+    left: 0;
+    color: #000;
+    z-index: 100;
+    top: 0;
+    height: 100vh;
+  }
