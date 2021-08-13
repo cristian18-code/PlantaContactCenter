@@ -44,7 +44,7 @@ class CreateCollaboratorsTable extends Migration
             $table->integer('login')->nullable();
             $table->date('mes')->nullable();
             $table->string('tipo')->nullable();
-            $table->string('genero')->nullable();
+            $table->enum('genero', ['Masculino', 'Femenino'])->nullable();
             $table->string('localidad')->nullable();
             $table->string('estrato')->nullable();
             $table->string('hijos')->nullable();
