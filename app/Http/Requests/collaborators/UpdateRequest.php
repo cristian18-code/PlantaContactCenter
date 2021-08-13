@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,46 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'genero'=>'required|string|exists:collaborators,genero|max:255',
+            'localidad'=>'required|string|max:255|exists:collaborators,localidad',
+            'barrio'=>'required|string|max:255',
+            'hijos'=>'required|string|max:10',
+            'estrato'=>'required|integer|digits_between:1,2|max:10',
+            'nivelEstudio'=>'required|string|max:255|exists:collaborators,nivelEstudio',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'genero.required'=>'Este campo es requerido',
+            'genero.string '=>'El valor no es correcto',
+            'genero.exists'=>'El genero ingresado no existe.',
+            'genero.max'=>'Se permiten como maximo 255 caracteres',
+
+            'localidad.required'=>'Este campo es requerido',
+            'localidad.string'=>'El valor no es correcto',
+            'localidad.max'=>'Se permiten como maximo 255 caracteres',
+            'localidad.exists'=>'La localidad ingresada no existe.',
+
+            'barrio.required'=>'Este campo es requerido',
+            'barrio.string'=>'El valor no es correcto',
+            'barrio.max'=>'Se permiten como maximo 255 caracteres',
+            
+            
+            'hijos.required'=>'Este campo es requerido',
+            'hijos.string'=>'El valor no es correcto',
+            'hijos.max'=>'Se permiten como maximo 10 caracteres',
+
+            'estrato.required'=>'Este campo es requerido',
+            'estrato.integer'=>'El valor no es correcto',
+            'estrato.digits_between'=>'Se permiten como maximo 2 caracteres',
+            'estrato.max'=>'El valor maximo ingresado puede ser 10',
+
+            'nivelEstudio.required'=>'Este campo es requerido',
+            'nivelEstudio.string'=>'El valor no es correcto',
+            'nivelEstudio.max'=>'Solo se permiten 255 caracteres',
+            'nivelEstudio.exists'=>'El nivel de estudio ingresado no existe.',
         ];
     }
 }

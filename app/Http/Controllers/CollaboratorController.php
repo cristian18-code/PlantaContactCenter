@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Collaborator;
 use Illuminate\Http\Request;
 Use App\Http\Requests\collaborators\StoreRequest;
+use App\Http\Requests\collaborators\UpdateRequest;
 
 class CollaboratorController extends Controller
 {
@@ -60,7 +61,7 @@ class CollaboratorController extends Controller
      */
     public function edit(Collaborator $collaborator)
     {
-        //
+        return view('collaborators.edit', compact('collaborator'));
     }
 
     /**
@@ -70,9 +71,10 @@ class CollaboratorController extends Controller
      * @param  \App\Collaborator  $collaborator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Collaborator $collaborator)
+    public function update(UpdateRequest $request, Collaborator $collaborator)
     {
-        //
+        $collaborator->update($request->all());
+        return redirect()->route('collaborators.index')->with('status', 'El colaborador '.$collaborator->nombre.' ha sido actualizado con exito');
     }
 
     /**
@@ -83,6 +85,7 @@ class CollaboratorController extends Controller
      */
     public function destroy(Collaborator $collaborator)
     {
-        //
+        $collaborator->delete();
+        return redirect()->route('collaborators.index')->with('status', 'El colaborador '.$collaborator->nombre.' ha sido eliminado con exito');
     }
 }
