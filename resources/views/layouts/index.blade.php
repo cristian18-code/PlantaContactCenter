@@ -15,6 +15,7 @@
     <!-- Custom styles for this template-->
     {!! Html::style('public/sb-admin-2/css/sb-admin-2.css') !!}
     @yield('styles')
+    {!! Html::script('public/media/js/datatables/jquery-3.5.1.js') !!}
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -82,7 +83,6 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    {!! Html::script('public/media/js/datatables/jquery-3.5.1.js') !!}
     {!! Html::script('public/sb-admin-2/vendor/jquery/jquery.min.js') !!}
     {!! Html::script('public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}
     @yield('scripts')

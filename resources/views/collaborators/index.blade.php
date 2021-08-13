@@ -64,9 +64,9 @@
                                 <td>{{$collaborator->cargoNomina}}</td>
                                 <td style="width: 50px;">
                                     
-                                    {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE']) !!}
+                                    {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id]) !!}
 
-                                    <a class="jsgrid-button jsgrid-edit-button" href="#" title="Editar">
+                                    <a class="jsgrid-button jsgrid-edit-button" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
                                         <i class="far fa-edit"></i>
                                     </a>
                                     
@@ -77,6 +77,25 @@
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
+                            <script>
+                                $('#form_eliminar{{$collaborator->id}}').submit(function(e){
+                                    e.preventDefault();
+                                    Swal.fire({
+                                    title: 'Estas seguro de eliminar a {{$collaborator->nombre}}?',
+                                    text: "Esta accion no se podra reversar!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Si, eliminarlo/a!',
+                                    cancelButtonText: 'Cancelar'
+                                    }).then((result) => {
+                                    if (result.value) {
+                                        this.submit();
+                                    }
+                                    })
+                                });
+                            </script>
                             @endforeach
                         </tbody>
                     </table>
@@ -87,6 +106,7 @@
 </div>
 @endsection
 @section('scripts')
+    {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
     <script>
     $(document).ready(function() {
         $('#table').DataTable({
@@ -296,7 +316,7 @@
                 } 
         });
     } );
-    </script>    
+    </script>
     {!! Html::script('public/media/js/datatables/jquery.dataTables.min.js') !!}
     {!! Html::script('public/sb-admin-2/vendor/datatables/dataTables.bootstrap4.js') !!}    
 @endsection

@@ -23,7 +23,7 @@
                         <h4 class="card-title">Registrar colaborador</h4>
                     </div>
                     {!! Form::open(['route'=>'collaborators.store', 'method'=>'POST']) !!}
-                        @include('collaborators._form')
+                        @include('collaborators._formCreate')
                         <button type="submit" class="btn btn-primary mr-2 float-left">Guardar datos</button>
                         <a href="{{route('collaborators.index')}}" class="btn btn-danger mr-2 float-right">
                             Cancelar
