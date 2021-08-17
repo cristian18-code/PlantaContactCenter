@@ -12,9 +12,11 @@
 @endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <a class="btn btn-primary"
-        href="{{ route('collaborators.create') }}">
-        Agregar colaborador
+    <a href="{{route('collaborators.create')}}" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">Agregar colaborador</span>
     </a>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
@@ -66,11 +68,11 @@
                                     
                                     {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id]) !!}
 
-                                    <a class="jsgrid-button jsgrid-edit-button" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
+                                    <a class="btn btn-info btn-circle btn-sm" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
                                         <i class="far fa-edit"></i>
                                     </a>
                                     
-                                    <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                    <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
                                         <i class="far fa-trash-alt"></i>
                                     </button>
 
@@ -105,7 +107,7 @@
     </div>
 </div>
 @endsection
-@section('scripts')
+@section('scripts')    
     {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
     <script>
     $(document).ready(function() {

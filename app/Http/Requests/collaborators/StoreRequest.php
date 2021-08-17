@@ -39,7 +39,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'cedula.required'=>'Este campo es requerido',
-            'cedula.integer '=>'El valor no es correcto',
+            'cedula.integer'=>'El valor no es correcto',
             'cedula.unique'=>'Esta cedula ya se encuentra registrada',
             'cedula.digits_between'=>'Se requieren minimo 6 y maximo 11 caracteres',
 
