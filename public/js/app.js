@@ -1952,6 +1952,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1974,6 +1978,9 @@ __webpack_require__.r(__webpack_exports__);
     changeVisibility: function changeVisibility() {
       this.mostrarDatosLaborales = !this.mostrarDatosLaborales;
       this.mostrarDatosPersonales = !this.mostrarDatosPersonales;
+    },
+    changeStatus: function changeStatus() {
+      console.log("hola");
     }
   }
 });
@@ -37833,12 +37840,22 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "button",
+            "a",
             {
-              staticClass: "list-group-item list-group-item-action",
-              attrs: { type: "button" }
+              staticClass: "btn btn-block change-status",
+              class: [
+                _vm.collaborator.estado == "ACTIVO"
+                  ? "btn-success"
+                  : "btn-danger"
+              ],
+              attrs: {
+                href: "#",
+                "data-toggle": "modal",
+                "data-target": "#exampleModal"
+              },
+              on: { click: _vm.changeStatus }
             },
-            [_vm._v("Activo")]
+            [_vm._v(_vm._s(_vm.collaborator.estado))]
           )
         ])
       ])
@@ -38212,7 +38229,9 @@ var render = function() {
         _vm._v(" "),
         _c("p", { staticClass: "text-muted mt-2" }, [
           _vm._v(
-            "\r\n            " + _vm._s(_vm.colaborador.barrio) + "\r\n        "
+            "\r\n            " +
+              _vm._s(_vm.colaborador.localidad) +
+              "\r\n        "
           )
         ]),
         _vm._v(" "),
@@ -38220,7 +38239,11 @@ var render = function() {
         _vm._v(" "),
         _vm._m(7),
         _vm._v(" "),
-        _c("p", { staticClass: "text-muted mt-2" }),
+        _c("p", { staticClass: "text-muted mt-2" }, [
+          _vm._v(
+            "\r\n            " + _vm._s(_vm.colaborador.barrio) + "\r\n        "
+          )
+        ]),
         _vm._v(" "),
         _c("hr")
       ])

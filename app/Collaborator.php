@@ -8,6 +8,6 @@ class Collaborator extends Model
 {
     protected $fillable = [
         'cedula', 'nombre', 'Fingreso', 'contrato', 'supervisor', 'campania', 'cargoNomina', 'sueldo',
-        'genero', 'localidad', 'barrio', 'hijos', 'estrato', 'nivelEstudio',
+        'genero', 'localidad', 'barrio', 'hijos', 'estrato', 'nivelEstudio', 'estado'
     ];
 }

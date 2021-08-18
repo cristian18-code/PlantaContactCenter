@@ -82,15 +82,12 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript" src="{{asset('public/js/app.js')}}" defer></script>
     <!-- Bootstrap core JavaScript-->
     {!! Html::script('public/sb-admin-2/vendor/jquery/jquery.min.js') !!}
-    {!! Html::script('public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}
-    @yield('scripts')
     <!-- Core plugin JavaScript-->
     {!! Html::script('public/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js') !!}
     <!-- Custom scripts for all pages-->
     {!! Html::script('public/sb-admin-2/js/sb-admin-2.min.js') !!}
+    @yield('scripts')
 </body>
 </html>

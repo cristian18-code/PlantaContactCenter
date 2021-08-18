@@ -19,7 +19,7 @@ Route::get('/', function () {
 })->name('layouts');
 
 Auth::routes(['register'=>false]);
-
+Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_estatus')->name('collaborators.change_status');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/collaborators', 'CollaboratorController')->names('collaborators');

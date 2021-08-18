@@ -19,8 +19,11 @@
                         v-bind:class="[mostrarDatosLaborales ? 'active' : '']"
                     class="list-group-item list-group-item-action">Datos laborales</button>
                 <button type="button"
-                    class="list-group-item list-group-item-action">Gestionar novedades</button>
-                <button type="button" class="list-group-item list-group-item-action">Activo</button>
+                        class="list-group-item list-group-item-action">Gestionar novedades</button>
+                <a  href="#"
+                    data-toggle="modal" data-target="#exampleModal"
+                    v-bind:class="[collaborator.estado == 'ACTIVO' ? 'btn-success' : 'btn-danger']"
+                    class="btn btn-block change-status">{{collaborator.estado}}</a>
             </div>
         </div>
     </div>                        

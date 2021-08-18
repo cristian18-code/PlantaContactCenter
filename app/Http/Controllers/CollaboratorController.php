@@ -88,4 +88,10 @@ class CollaboratorController extends Controller
         $collaborator->delete();
         return redirect()->route('collaborators.index')->with('status', 'El colaborador '.$collaborator->nombre.' ha sido eliminado con exito');
     }
+
+    public function change_estatus(Request $request, Collaborator $collaborator){
+
+        $collaborator->update(['estado'=>$request->estado]);
+        return redirect()->back();
+    }
 }

@@ -112,7 +112,7 @@
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="{!! asset('public/sb-admin-2/img/undraw_profile_1.svg') !!}"
-                            alt="...">
+                        >
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">

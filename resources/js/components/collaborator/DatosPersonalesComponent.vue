@@ -37,12 +37,12 @@
         <hr>
         <strong><i class="fas fa-map-marked-alt mr-1"></i> localidad</strong>
         <p class="text-muted mt-2">
-            {{ colaborador.barrio }}
+            {{ colaborador.localidad }}
         </p>
         <hr>
         <strong><i class="fas fa-map-marker-alt mr-1"></i>Barrio</strong>
         <p class="text-muted mt-2">
-            
+            {{ colaborador.barrio }}
         </p>
         <hr>
     </div>
