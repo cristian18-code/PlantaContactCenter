@@ -57,7 +57,7 @@
         props:{
             colaborador:{
                 type: Object,
-                default: 'indefined'
+                default: 'undefined'
             }
         }
     }

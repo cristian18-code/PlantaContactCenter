@@ -24,7 +24,16 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'genero'=>'required|string|exists:collaborators,genero|max:255',
+            // crate
+            'nombre'=>'required|string|max:255',
+            'Fingreso'=>'required|date',
+            'contrato'=>'required|string|max:255',
+            'supervisor'=>'required|string|max:255',
+            'campania'=>'required|string|max:255',
+            'cargoNomina'=>'required|string|max:255',
+            'sueldo'=>'required|integer',
+            // update
+            'genero'=>'string|exists:collaborators,genero|max:255',
             'localidad'=>'required|string|max:255|exists:collaborators,localidad',
             'barrio'=>'required|string|max:255',
             'hijos'=>'required|string|max:10',
@@ -36,7 +45,33 @@ class UpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'genero.required'=>'Este campo es requerido',
+            // create
+            'nombre.required'=>'Este campo es requerido',
+            'nombre.string'=>'El valor no es correcto',
+            'nombre.max'=>'Solo se permiten 11 caracteres',
+
+            'Fingreso.required'=>'Este campo es requerido',
+            'Fingreso.date'=>'El valor no es correcto',
+            
+            'contrato.required'=>'Este campo es requerido',
+            'contrato.string'=>'El valor no es correcto',
+
+            'supervisor.required'=>'Este campo es requerido',
+            'supervisor.string'=>'El valor no es correcto',
+            'supervisor.max'=>'Solo se permiten 255 caracteres',
+
+            'campania.required'=>'Este campo es requerido',
+            'campania.string'=>'El valor no es correcto',
+            'campania.max'=>'Solo se permiten 255 caracteres',
+
+            'cargoNomina.required'=>'Este campo es requerido',
+            'cargoNomina.string'=>'El valor no es correcto',
+            'cargoNomina.max'=>'Solo se permiten 255 caracteres',
+
+            'sueldo.required'=>'Este campo es requerido',
+            'sueldo.integer'=>'El valor debe ser numerico, no se permiten espacios, puntos ni comas',
+
+            // update
             'genero.string '=>'El valor no es correcto',
             'genero.exists'=>'El genero ingresado no existe.',
             'genero.max'=>'Se permiten como maximo 255 caracteres',

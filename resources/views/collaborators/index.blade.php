@@ -35,12 +35,12 @@
                 <div class="d-flex justify-content-between">
                     <h4 class="card-title">Tabla de colaboradores</h4>
                     <div class="btn-group">
-                        <h4 class="card-title">
+                        {{-- <h4 class="card-title">
                             <a href="#">
                                 <i class="fas fa-download"></i>
                                 Exportar
                             </a>
-                        </h4>
+                        </h4> --}}
                     </div>
                 </div>
 

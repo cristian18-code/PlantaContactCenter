@@ -57,11 +57,12 @@
     export default {
         mounted () {
             name: "DatosLaborales"
+            console.log(this.colaborador)
         },
         props:{
             colaborador:{
                 type: Object,
-                default: 'indefined'
+                default: 'undefined'
             }
         }
     }

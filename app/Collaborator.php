@@ -10,4 +10,8 @@ class Collaborator extends Model
         'cedula', 'nombre', 'Fingreso', 'contrato', 'supervisor', 'campania', 'cargoNomina', 'sueldo',
         'genero', 'localidad', 'barrio', 'hijos', 'estrato', 'nivelEstudio', 'estado'
     ];
+
+    public function novelties(){
+        return $this->hasMany(Novelty::class);
+    }
 }

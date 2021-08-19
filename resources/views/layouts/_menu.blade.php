@@ -31,7 +31,7 @@
         <div id="collapseTwo" class="collapse {{ (request()->is('collaborators*')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gestionar colaboradores:</h6>
-                <a class="collapse-item {{ (request()->is('collaborators')) ? 'active' : '' }}" href="{{route('collaborators.index')}}">Listado colaboradores</a>
+                <a class="collapse-item {{ (request()->is('collaborators') || request()->is('collaborators/*/edit')) ? 'active' : '' }}" href="{{route('collaborators.index')}}">Listado colaboradores</a>
                 <a class="collapse-item {{ (request()->is('collaborators/create*')) ? 'active' : '' }}" href="{{route('collaborators.create')}}">Registrar colaborador</a>
             </div>
         </div>
