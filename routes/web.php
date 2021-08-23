@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('layouts.index');
 })->name('layouts');
 
-Auth::routes(['register'=>false]);
+Auth::routes();
 Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_estatus')->name('collaborators.change_status');
 Route::get('/home', 'HomeController@index')->name('home');
 

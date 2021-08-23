@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('title') | Planta</title>
+    <title>@yield('title', 'Inicio') | Planta</title>
 
     <link rel="icon" type="image/png" href="{{asset('public/media/img/planta.png')}}"/>
     <!-- Custom fonts for this template-->
@@ -29,7 +29,7 @@
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-dark bg-primary topbar mb-4 static-top shadow">
                     @include('layouts._nav')
                 </nav>  
                 <!-- End of Topbar -->

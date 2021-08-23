@@ -1953,9 +1953,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1978,9 +1975,6 @@ __webpack_require__.r(__webpack_exports__);
     changeVisibility: function changeVisibility() {
       this.mostrarDatosLaborales = !this.mostrarDatosLaborales;
       this.mostrarDatosPersonales = !this.mostrarDatosPersonales;
-    },
-    changeStatus: function changeStatus() {
-      console.log("hola");
     }
   }
 });
@@ -2053,11 +2047,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     name: "DatosLaborales";
+
+    console.log(this.colaborador);
   },
   props: {
     colaborador: {
       type: Object,
-      "default": 'indefined'
+      "default": 'undefined'
     }
   }
 });
@@ -2130,7 +2126,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     colaborador: {
       type: Object,
-      "default": 'indefined'
+      "default": 'undefined'
     }
   }
 });
@@ -37831,15 +37827,6 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "button",
-            {
-              staticClass: "list-group-item list-group-item-action",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Gestionar novedades")]
-          ),
-          _vm._v(" "),
-          _c(
             "a",
             {
               staticClass: "btn btn-block change-status",
@@ -37852,8 +37839,7 @@ var render = function() {
                 href: "#",
                 "data-toggle": "modal",
                 "data-target": "#exampleModal"
-              },
-              on: { click: _vm.changeStatus }
+              }
             },
             [_vm._v(_vm._s(_vm.collaborator.estado))]
           )
