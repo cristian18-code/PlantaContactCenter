@@ -11,7 +11,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="#">Panel principal</a></li>
                 <li class="breadcrumb-item"><a href="{{route('collaborators.index')}}">Colaboradores</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$collaborator->nombre}}</li>
             </ol>

@@ -12,15 +12,21 @@
 @endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <a href="{{route('collaborators.create')}}" class="btn btn-primary btn-icon-split">
-        <span class="icon text-white-50">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">Agregar colaborador</span>
-    </a>
+    @can("collaborators.create")
+        <a href="{{route('collaborators.create')}}" class="btn btn-primary btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Agregar colaborador</span>
+        </a>
+    @else
+        <h3 class="page-title mb-0">
+            Colaboradores
+        </h3>
+    @endcan
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+            <li class="breadcrumb-item"><a href="#">Panel principal</a></li>
             <li class="breadcrumb-item active" aria-current="page">Colaboradores</li>
         </ol>
     </nav>               

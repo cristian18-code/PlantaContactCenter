@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('layouts')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
         <div class="sidebar-brand-icon">
             <img src="{{asset('public/media/img/planta.png')}}" width="50px" alt="">
         </div>
@@ -11,9 +11,9 @@
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
-        <a class="nav-link" href="{{route('layouts')}}">
+        <a class="nav-link" href="{{route('home')}}">
             <i class="fas fa-home"></i>
-            <span>Panel administrador</span></a>
+            <span>Panel principal</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider">

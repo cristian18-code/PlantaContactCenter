@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('layouts.index');
-})->name('layouts');
-
 Auth::routes();
-Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_estatus')->name('collaborators.change_status');
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/collaborators', 'CollaboratorController')->names('collaborators');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_status')->name('collaborators.change_status');
+    Route::get('/home', 'HomeController@index')->name('home');
+    
+    Route::resource('/collaborators', 'CollaboratorController')->names('collaborators'); 
+});
