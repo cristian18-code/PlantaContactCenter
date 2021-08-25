@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.admin')
 @section('title', 'Registrar colaborador')
 @section('content')
 <div class="content-wrapper">
@@ -10,7 +10,7 @@
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="#">Panel principal</a></li>
                 <li class="breadcrumb-item"><a href="{{route('collaborators.index')}}">Colaboradores</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Colaboradores</li>
+                <li class="breadcrumb-item active" aria-current="page">Registrar colaborador</li>
             </ol>
         </nav>               
     </div>

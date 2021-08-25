@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Gestion de colaboradores')
+@section('title', 'Gestion de usuarios')
 @section('styles')
 <style type="text/css">
     .unstyled-button{
@@ -12,22 +12,22 @@
 @endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    @can("collaborators.create")
-        <a href="{{route('collaborators.create')}}" class="btn btn-primary btn-icon-split">
+    @can("users.create")
+        <a href="{{route('users.create')}}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
-            <span class="text">Agregar colaborador</span>
+            <span class="text">Agregar usuario</span>
         </a>
     @else
         <h3 class="page-title mb-0">
-            Colaboradores
+            Usuarios
         </h3>
     @endcan
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="#">Panel principal</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Colaboradores</li>
+            <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
         </ol>
     </nav>               
 </div>
@@ -39,7 +39,7 @@
             <div class="card-body">
                 
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title">Tabla de colaboradores</h4>
+                    <h4 class="card-title">Tabla de usuarios</h4>
                     <div class="btn-group">
                         {{-- <h4 class="card-title">
                             <a href="#">
@@ -56,40 +56,38 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
-                                <th>campaña</th>
-                                <th>Cargo</th>
+                                <th>Uername</th>
+                                <th>Rol</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($collaborators as $collaborator)
+                            @foreach ($users as $user)
                             <tr>
-                                <th scope="row">{{$collaborator->id}}</th>
-                                <td>
-                                    <a href="{{route('collaborators.show', $collaborator)}}">{{$collaborator->nombre}}</a>
-                                </td>
-                                <td>{{$collaborator->campania}}</td>
-                                <td>{{$collaborator->cargoNomina}}</td>
+                                <th scope="row">{{$user->id}}</th>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->username}}</td>
+                                <td>{{$user->role[0]->name}}</td>
                                 <td style="width: 50px;">
                                     
-                                    {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id]) !!}
+                                    {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE', 'id'=>'form_eliminar'.$user->id]) !!}
 
-                                    <a class="btn btn-info btn-circle btn-sm" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
-                                        <i class="far fa-edit"></i>
-                                    </a>
-                                    
-                                    <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
+                                        <a class="btn btn-info btn-circle btn-sm" href="{{route('users.edit', $user)}}" title="Editar">
+                                            <i class="far fa-edit"></i>
+                                        </a>
+                                        
+                                        <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
 
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
                             <script>
-                                $('#form_eliminar{{$collaborator->id}}').submit(function(e){
+                                $('#form_eliminar{{$user->id}}').submit(function(e){
                                     e.preventDefault();
                                     Swal.fire({
-                                    title: 'Estas seguro de eliminar a {{$collaborator->nombre}}?',
+                                    title: 'Estas seguro de eliminar a {{$user->name}}?',
                                     text: "Esta accion no se podra reversar!",
                                     icon: 'warning',
                                     showCancelButton: true,

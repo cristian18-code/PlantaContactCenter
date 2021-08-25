@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.admin')
 @section('title', 'Datos de colaborador')
 @section('options')
 {{$collaborator->sueldo = number_format($collaborator->sueldo)}}

@@ -21,21 +21,37 @@
     <div class="sidebar-heading">
         Principal
     </div>
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ (request()->is('collaborators*')) ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-user-tie"></i>
+        <a class="nav-link" href="{{route('collaborators.index')}}">
+            <i class="fas fa-fw fa-table"></i>
             <span>Colaboradores</span>
         </a>
-        <div id="collapseTwo" class="collapse {{ (request()->is('collaborators*')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Gestionar colaboradores:</h6>
-                <a class="collapse-item {{ (request()->is('collaborators') || request()->is('collaborators/*/edit')) ? 'active' : '' }}" href="{{route('collaborators.index')}}">Listado colaboradores</a>
-                <a class="collapse-item {{ (request()->is('collaborators/create*')) ? 'active' : '' }}" href="{{route('collaborators.create')}}">Registrar colaborador</a>
-            </div>
-        </div>
     </li>
+
+    {{--  Super Administrador --}}
+    @can("users.index" || "roles.index")
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Super Administrador
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{ (request()->is('users*') || request()->is('roles*')) ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdministrador"
+                aria-expanded="true" aria-controls="collapseAdministrador">
+                <i class="fas fa-user-tie"></i>
+                <span>Super Administrador</span>
+            </a>
+            <div id="collapseAdministrador" class="collapse {{ (request()->is('users*')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Gestionar usuarios:</h6>
+                    <a class="collapse-item {{ (request()->is('users*')) ? 'active' : '' }}" href="{{route('users.index')}}">Usuarios</a>
+                    <a class="collapse-item {{ (request()->is('roles*')) ? 'active' : '' }}" href="{{route('roles.index')}}">Roles</a>
+                </div>
+            </div>
+        </li>
+    @endcan
 
     <!-- Nav Item - Utilities Collapse Menu -->
     {{-- <li class="nav-item">
