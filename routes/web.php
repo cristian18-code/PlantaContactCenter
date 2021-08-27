@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/collaborators', 'CollaboratorController')->names('collaborators');
 
     // collaborators
     Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_status')->name('collaborators.change_status');
-
     // users
     Route::resource('/users', 'UserController')->names('users');
     Route::resource('/roles', 'RoleController')->names('roles');

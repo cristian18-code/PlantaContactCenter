@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Gestion de colaboradores')
+@section('title', 'Gestion de roles')
 @section('styles')
 <style type="text/css">
     .unstyled-button{
@@ -12,22 +12,22 @@
 @endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    @can("collaborators.create")
-        <a href="{{route('collaborators.create')}}" class="btn btn-primary btn-icon-split">
+    @can("roles.create")
+        <a href="{{route('roles.create')}}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
-            <span class="text">Agregar colaborador</span>
+            <span class="text">Agregar rol</span>
         </a>
     @else
         <h3 class="page-title mb-0">
-            Colaboradores
+            Roles
         </h3>
     @endcan
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Panel principal</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Colaboradores</li>
+            <li class="breadcrumb-item active" aria-current="page">Roles</li>
         </ol>
     </nav>               
 </div>
@@ -39,7 +39,7 @@
             <div class="card-body">
                 
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title">Tabla de colaboradores</h4>
+                    <h4 class="card-title">Tabla de roles</h4>
                     <div class="btn-group">
                         {{-- <h4 class="card-title">
                             <a href="#">
@@ -56,44 +56,36 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
-                                <th>campaña</th>
-                                <th>Cargo</th>
-                                <th>Estado</th>
+                                <th>Descripcion</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($collaborators as $collaborator)
+                            @foreach ($roles as $role)
                             <tr>
-                                <th scope="row">{{$collaborator->id}}</th>
-                                <td>
-                                    <a href="{{route('collaborators.show', $collaborator)}}">{{$collaborator->nombre}}</a>
-                                </td>
-                                <td>{{$collaborator->campania}}</td>
-                                <td>{{$collaborator->cargoNomina}}</td>
-                                <td><span class="badge rounded-pill color-white @if($collaborator->estado == 'ACTIVO') bg-success @elseif($collaborator->estado == 'INCAPACIDAD' || $collaborator->estado == 'VACACIONES' || $collaborator->estado == 'AUSENTE') bg-warning @else bg-danger @endif">{{$collaborator->estado}}</span></td>
+                                <th scope="row">{{$role->id}}</th>
+                                <td>{{$role->name}}</td>
+                                <td>{{$role->description}}</td>
                                 <td style="width: 50px;">
                                     
-                                    {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id]) !!}
+                                    {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE', 'id'=>'form_eliminar'.$role->id]) !!}
 
-                                    @can('collaborators.edit')
-                                        <a class="btn btn-info btn-circle btn-sm" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
+                                        <a class="btn btn-info btn-circle btn-sm" href="{{route('roles.edit', $role)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                    @endcan
-                                    
-                                    <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
+                                        
+                                        <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
 
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
                             <script>
-                                $('#form_eliminar{{$collaborator->id}}').submit(function(e){
+                                $('#form_eliminar{{$role->id}}').submit(function(e){
                                     e.preventDefault();
                                     Swal.fire({
-                                    title: 'Estas seguro de eliminar a {{$collaborator->nombre}}?',
+                                    title: 'Estas seguro de eliminar a {{$role->name}}?',
                                     text: "Esta accion no se podra reversar!",
                                     icon: 'warning',
                                     showCancelButton: true,

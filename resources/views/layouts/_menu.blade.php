@@ -15,18 +15,22 @@
             <i class="fas fa-home"></i>
             <span>Panel principal</span></a>
     </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Principal
-    </div>
-    <li class="nav-item {{ (request()->is('collaborators*')) ? 'active' : '' }}">
-        <a class="nav-link" href="{{route('collaborators.index')}}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Colaboradores</span>
-        </a>
-    </li>
+    @can('collaborators.index')
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Principal
+        </div>
+    @endcan
+    @can('collaborators.index')
+        <li class="nav-item {{ (request()->is('collaborators*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('collaborators.index')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Colaboradores</span>
+            </a>
+        </li>
+    @endcan
 
     {{--  Super Administrador --}}
     @can("users.index" || "roles.index")
@@ -43,7 +47,7 @@
                 <i class="fas fa-user-tie"></i>
                 <span>Super Administrador</span>
             </a>
-            <div id="collapseAdministrador" class="collapse {{ (request()->is('users*')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseAdministrador" class="collapse {{ (request()->is('users*') || request()->is('roles*')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestionar usuarios:</h6>
                     <a class="collapse-item {{ (request()->is('users*')) ? 'active' : '' }}" href="{{route('users.index')}}">Usuarios</a>
@@ -54,7 +58,7 @@
     @endcan
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    {{-- <li class="nav-item">
+    {{--li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>

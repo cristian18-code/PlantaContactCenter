@@ -48,7 +48,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <h6 class="mt-1">{{Auth::user()->role[0]->name}} </h6>
+                <h6 class="mt-1">{{Auth::user()->roles[0]->name}} </h6>
             </a>
         </li>
         

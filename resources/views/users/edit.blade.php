@@ -1,16 +1,19 @@
 @extends('layouts.admin')
-@section('title', 'Registrar colaborador')
+@section('title','Editar Usuario')
+@section('styles')
+
+@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h3 class="page-title mb-0">
-            Colaboradores
+            {{$user->nombre}}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">Panel principal</a></li>
-                <li class="breadcrumb-item"><a href="{{route('collaborators.index')}}">Colaboradores</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registrar colaborador</li>
+                <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$user->nombre}}</li>
             </ol>
         </nav>               
     </div>
@@ -20,12 +23,12 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registrar colaborador</h4>
+                        <h4 class="card-title">Actualizar informacion</h4>
                     </div>
-                    {!! Form::open(['route'=>'collaborators.store', 'method'=>'POST']) !!}
-                        @include('collaborators._formCreate')
-                        <button type="submit" class="btn btn-primary mr-2 float-left">Guardar datos</button>
-                        <a href="{{route('collaborators.index')}}" class="btn btn-danger mr-2 float-right">
+                    {!! Form::model($user, ['route'=>['users.update', $user], 'method'=>'PUT']) !!}
+                        @include('users._form')
+                        <button type="submit" class="btn btn-primary mr-2 float-left col-3">Actualizar datos</button>
+                        <a href="{{route('users.index')}}" class="btn btn-danger mr-2 float-right col-2">
                             Cancelar
                         </a>
                     {!! Form::close() !!}

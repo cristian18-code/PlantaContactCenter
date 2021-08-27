@@ -43,5 +43,58 @@ class PermissionsTableSeeder extends Seeder
             'slug'=>'collaborators.change_status',
             'description'=>'Permite editar el estado de un colaborador.',
         ]);
+
+        // users
+        Permission::create([
+            'name'=>'listado de usuarios',
+            'slug'=>'users.index',
+            'description'=>'Permite ver el total de los usuarios registrados.',
+        ]);
+        // Permission::create([
+        //     'name'=>'detalles de usuarios',
+        //     'slug'=>'users.show',
+        //     'description'=>'Permite ver los detalles de los usuarios registrados.',
+        // ]);
+        Permission::create([
+            'name'=>'creacion de usuarios',
+            'slug'=>'users.create',
+            'description'=>'Permite registrar un nuevo usuario.',
+        ]);
+        Permission::create([
+            'name'=>'edicion de usuarios',
+            'slug'=>'users.edit',
+            'description'=>'Permite editar algun usuario.',
+        ]);
+        Permission::create([
+            'name'=>'eliminacion de usuarios',
+            'slug'=>'users.destroy',
+            'description'=>'Permite eliminar un usuario ya registrado.',
+        ]);
+        // roles
+        Permission::create([
+            'name'=>'listado de roles',
+            'slug'=>'roles.index',
+            'description'=>'Permite ver el total de los roles registrados.',
+        ]);
+        // Permission::create([
+        //     'name'=>'detalles de usuarios',
+        //     'slug'=>'roles.show',
+        //     'description'=>'Permite ver los detalles de los usuarios registrados.',
+        // ]);
+        Permission::create([
+            'name'=>'creacion de roles',
+            'slug'=>'roles.create',
+            'description'=>'Permite registrar un nuevo rol.',
+        ]);
+        Permission::create([
+            'name'=>'edicion de roles',
+            'slug'=>'roles.edit',
+            'description'=>'Permite editar algun rol.',
+        ]);
+        Permission::create([
+            'name'=>'eliminacion de roles',
+            'slug'=>'roles.destroy',
+            'description'=>'Permite eliminar un rol ya registrado.',
+        ]);
     }
 }

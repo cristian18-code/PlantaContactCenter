@@ -26,7 +26,7 @@
     @endcan
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#">Panel principal</a></li>
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Panel principal</a></li>
             <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
         </ol>
     </nav>               
@@ -67,7 +67,7 @@
                                 <th scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->username}}</td>
-                                <td>{{$user->role[0]->name}}</td>
+                                <td>{{@$user->roles[0]->name}}</td>
                                 <td style="width: 50px;">
                                     
                                     {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE', 'id'=>'form_eliminar'.$user->id]) !!}
