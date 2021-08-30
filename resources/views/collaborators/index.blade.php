@@ -59,7 +59,9 @@
                                 <th>campaña</th>
                                 <th>Cargo</th>
                                 <th>Estado</th>
-                                <th>Acciones</th>
+                                @if(Gate::check('collaborators.edit') || Gate::check('collaborators.destroy'))
+                                    <th>Acciones</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -67,27 +69,29 @@
                             <tr>
                                 <th scope="row">{{$collaborator->id}}</th>
                                 <td>
-                                    <a href="{{route('collaborators.show', $collaborator)}}">{{$collaborator->nombre}}</a>
+                                    <a href="{{route('collaborators.show', $collaborator)}}">{{mb_strtolower($collaborator->nombre)}}</a>
                                 </td>
                                 <td>{{$collaborator->campania}}</td>
                                 <td>{{$collaborator->cargoNomina}}</td>
                                 <td><span class="badge rounded-pill color-white @if($collaborator->estado == 'ACTIVO') bg-success @elseif($collaborator->estado == 'INCAPACIDAD' || $collaborator->estado == 'VACACIONES' || $collaborator->estado == 'AUSENTE') bg-warning @else bg-danger @endif">{{$collaborator->estado}}</span></td>
-                                <td style="width: 50px;">
-                                    
-                                    {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id]) !!}
+                                @if(Gate::check('collaborators.edit') || Gate::check('collaborators.destroy'))
+                                    <td style="width: 50px;">
+                                        @can('collaborators.edit')
+                                            <a class="btn btn-info btn-circle btn-sm" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+                                        @endcan
+                                        @can('collaborators.destroy')
+                                        {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id, 'style'=>'display:inline;']) !!}
+                                        
+                                            <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
 
-                                    @can('collaborators.edit')
-                                        <a class="btn btn-info btn-circle btn-sm" href="{{route('collaborators.edit', $collaborator)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-                                    @endcan
-                                    
-                                    <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-
-                                    {!! Form::close() !!}
-                                </td>
+                                        {!! Form::close() !!}
+                                        @endcan
+                                    </td>
+                                @endif    
                             </tr>
                             <script>
                                 $('#form_eliminar{{$collaborator->id}}').submit(function(e){
