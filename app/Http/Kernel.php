@@ -67,5 +67,7 @@ class Kernel extends HttpKernel
         'role'=>\Caffeinated\Shinobi\Middleware\UserHasRole::class,
         'allrole'=>\Caffeinated\Shinobi\Middleware\UserHasAllRoles::class,
         'anyrole'=>\Caffeinated\Shinobi\Middleware\UserHasAnyRole::class,
+
+        'ValidationRol' => \App\Http\Middleware\collaborator\ValidationRol::class,
     ];
 }

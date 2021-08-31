@@ -18,12 +18,14 @@ Auth::routes(['register'=>false]);
 Route::middleware(['auth'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('/collaborators', 'CollaboratorController')->names('collaborators');
-
+    
     // collaborators
+    Route::resource('/collaborators', 'CollaboratorController')->except('show')->names('collaborators');
     Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_status')->name('collaborators.change_status');
     Route::get('export/collaborators', 'CollaboratorController@export')->name('collaborators.export');
+    Route::get('collaborators/{collaborator}/show', 'CollaboratorController@show')->name('collaborators.show');
+    
     // users
-    Route::resource('/users', 'UserController')->names('users');
-    Route::resource('/roles', 'RoleController')->names('roles');
+    Route::resource('/users', 'UserController')->except('show')->names('users');
+    Route::resource('/roles', 'RoleController')->except('show')->names('roles');
 });

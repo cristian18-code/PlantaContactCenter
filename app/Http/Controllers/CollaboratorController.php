@@ -18,6 +18,7 @@ class CollaboratorController extends Controller
         $this->middleware('can:collaborators.index')->only("index");
         $this->middleware('can:collaborators.show')->only("show");
         $this->middleware('can:collaborators.edit')->only(["edit", "update"]);
+        $this->middleware('ValidationRol')->only(["edit", "update", 'show']);
         $this->middleware('can:collaborators.create')->only(["create", "store"]);
         $this->middleware('can:collaborators.destroy')->only("destroy");
         $this->middleware('can:collaborators.change_status')->only("change_status");
