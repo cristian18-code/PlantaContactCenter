@@ -40,14 +40,16 @@
                 
                 <div class="d-flex justify-content-between">
                     <h4 class="card-title">Tabla de colaboradores</h4>
-                    <div class="btn-group">
-                        {{-- <h4 class="card-title">
-                            <a href="#">
-                                <i class="fas fa-download"></i>
-                                Exportar
-                            </a>
-                        </h4> --}}
-                    </div>
+                    @can('collaborators.export')
+                        <div class="btn-group">
+                            <h4 class="card-title">
+                                <a href="{{route('collaborators.export')}}">
+                                    <i class="fas fa-download"></i>
+                                    Exportar
+                                </a>
+                            </h4>
+                        </div>
+                    @endcan
                 </div>
 
                 <div class="table-responsive">

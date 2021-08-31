@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     // collaborators
     Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_status')->name('collaborators.change_status');
+    Route::get('export/collaborators', 'CollaboratorController@export')->name('collaborators.export');
     // users
     Route::resource('/users', 'UserController')->names('users');
     Route::resource('/roles', 'RoleController')->names('roles');

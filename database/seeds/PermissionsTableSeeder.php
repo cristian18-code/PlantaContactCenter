@@ -43,7 +43,11 @@ class PermissionsTableSeeder extends Seeder
             'slug'=>'collaborators.change_status',
             'description'=>'Permite editar el estado de un colaborador.',
         ]);
-
+        Permission::create([
+            'name'=>'Exportar colaboradores',
+            'slug'=>'collaborators.export',
+            'description'=>'Permite descargar el consolidado total de los colaboradores.',
+        ]);
         // users
         Permission::create([
             'name'=>'listado de usuarios',

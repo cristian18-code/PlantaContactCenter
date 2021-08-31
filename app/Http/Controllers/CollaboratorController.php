@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Collaborator;
+use App\Exports\CollaboratorsExport;
 use Illuminate\Http\Request;
 Use App\Http\Requests\collaborators\StoreRequest;
 use App\Http\Requests\collaborators\UpdateRequest;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CollaboratorController extends Controller
 {
@@ -18,11 +21,17 @@ class CollaboratorController extends Controller
         $this->middleware('can:collaborators.create')->only(["create", "store"]);
         $this->middleware('can:collaborators.destroy')->only("destroy");
         $this->middleware('can:collaborators.change_status')->only("change_status");
+        $this->middleware('can:collaborators.export')->only("export");
     }
 
     public function index()
     {
-        $collaborators = Collaborator::get();
+        if (Auth::user()->roles[0]->name == 'Supervisor') {
+            $collaborators = Collaborator::get()->where('supervisor', Auth::user()->name);    
+        } else {
+            $collaborators = Collaborator::get();
+        }
+
         return view('collaborators.index', compact('collaborators'));
     }
 
@@ -63,5 +72,10 @@ class CollaboratorController extends Controller
 
         $collaborator->update(['estado'=>$request->estado]);
         return redirect()->back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new CollaboratorsExport, 'collaborators.xlsx');
     }
 }
