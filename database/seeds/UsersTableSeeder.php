@@ -15,6 +15,18 @@ class UsersTableSeeder extends Seeder
             'special'=>'all-access',
         ]);
 
+        Role::create([
+            'name'=>'Administrador',
+            'slug'=>'admin',
+            'description'=>'Usuario que administra el sistema, no cuenta con permisos totales, pero si con la gran mayoria',
+        ]);
+
+        Role::create([
+            'name'=>'Supervisor',
+            'slug'=>'Supervisor',
+            'description'=>'Usuario que edita y agrega informacion de sus colaboradores a cargo',
+        ]);
+
         $user = User::create([
             'name'=>'Christian David Garzon Pinilla',
             'username'=>'christiangpi',

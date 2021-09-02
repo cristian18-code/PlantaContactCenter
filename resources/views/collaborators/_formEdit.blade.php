@@ -170,6 +170,9 @@
             @enderror
         </div>
     </div>
+    <div class="col-md-12">
+        <hr>
+    </div>
 @else
     <input class="form-control" type="hidden" name="create" value="false">    
 @endcan

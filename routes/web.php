@@ -20,11 +20,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     
     // collaborators
-    Route::resource('/collaborators', 'CollaboratorController')->except('show')->names('collaborators');
+    Route::resource('/collaborators', 'CollaboratorController')->names('collaborators');
     Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_status')->name('collaborators.change_status');
     Route::get('export/collaborators', 'CollaboratorController@export')->name('collaborators.export');
-    Route::get('collaborators/{collaborator}/show', 'CollaboratorController@show')->name('collaborators.show');
-    
+
     // users
     Route::resource('/users', 'UserController')->except('show')->names('users');
     Route::resource('/roles', 'RoleController')->except('show')->names('roles');
