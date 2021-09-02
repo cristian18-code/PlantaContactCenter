@@ -48,7 +48,6 @@
     export default {
         mounted () {
             name: "DatosLaborales"
-            // console.log(this.collaborator)
         },
         components: {
             DatosPersonales

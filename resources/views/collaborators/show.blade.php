@@ -11,8 +11,6 @@
         background: none;
     }
 </style>
-    {!! Html::style('public/sb-admin-2/vendor/datatables/dataTables.bootstrap4.css') !!}
-    {{-- {!! Html::style('public/css/app.css') !!} --}}
 @endsection
 @section('content')
 <div class="content-wrapper">

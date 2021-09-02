@@ -112,7 +112,6 @@
 @section('scripts')    
     {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
     {!! Html::script('public/media/js/datatables/renderTable.js') !!}
-    {!! Html::script('public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}
     {!! Html::script('public/media/js/datatables/jquery.dataTables.min.js') !!}
     {!! Html::script('public/sb-admin-2/vendor/datatables/dataTables.bootstrap4.js') !!}    
 @endsection

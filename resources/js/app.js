@@ -30,5 +30,5 @@ Vue.component('datos-laborales', require('./components/collaborator/DatosLaboral
  */
 
 const app = new Vue({
-    el: '#datos',
+    el: '#app',
 });

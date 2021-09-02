@@ -11,7 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js([        
+        'resources/js/app.js',
+        'public/sb-admin-2/js/sb-admin-2.js',
+        'public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js',
+        'public/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js']
+        , 'public/js')
+        .styles(['public/sb-admin-2/css/sb-admin-2.css'], 'public/css/app.css');
 
 mix.version();
