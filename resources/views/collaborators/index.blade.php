@@ -95,25 +95,6 @@
                                     </td>
                                 @endif    
                             </tr>
-                            <script>
-                                $('#form_eliminar{{$collaborator->id}}').submit(function(e){
-                                    e.preventDefault();
-                                    Swal.fire({
-                                    title: 'Estas seguro de eliminar a {{$collaborator->nombre}}?',
-                                    text: "Esta accion no se podra reversar!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Si, eliminarlo/a!',
-                                    cancelButtonText: 'Cancelar'
-                                    }).then((result) => {
-                                    if (result.value) {
-                                        this.submit();
-                                    }
-                                    })
-                                });
-                            </script>
                             @endforeach
                         </tbody>
                     </table>

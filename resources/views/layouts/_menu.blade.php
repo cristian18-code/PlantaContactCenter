@@ -47,7 +47,7 @@
                 <i class="fas fa-user-tie"></i>
                 <span>Super Administrador</span>
             </a>
-            <div id="collapseAdministrador" class="collapse {{ (request()->is('users*') || request()->is('roles*')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseAdministrador" class="collapse {{ (request()->is('users*') || request()->is('roles*')) ? 'show' : '' }}" aria-labelledby="headingAdministrador" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestionar usuarios:</h6>
                     <a class="collapse-item {{ (request()->is('users*')) ? 'active' : '' }}" href="{{route('users.index')}}">Usuarios</a>

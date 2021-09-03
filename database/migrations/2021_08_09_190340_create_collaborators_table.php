@@ -46,6 +46,7 @@ class CreateCollaboratorsTable extends Migration
             $table->string('hijos')->nullable();
             $table->string('nivelEstudio')->nullable();
             $table->string('barrio')->nullable();
+            $table->string('image')->nullable();;
             $table->string('periodosPendientes')->nullable();
             $table->enum('vacaciones', ['No programar', 'Tomadas', 'Programada'])->nullable();
             $table->date('Fdia_familia')->nullable();

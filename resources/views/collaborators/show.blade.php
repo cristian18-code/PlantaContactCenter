@@ -10,6 +10,9 @@
         padding: 0;
         background: none;
     }
+    #cont-image img {
+        max-width: 150px;
+    }
 </style>
 @endsection
 @section('content')
@@ -29,7 +32,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body" id="datos">
+                <div class="card-body">
                     <datos-colaborador variable="{{ $collaborator }}"/>
                 </div>
                 <div class="card-footer text-muted">
@@ -77,5 +80,4 @@
 @endsection
 @section('scripts')
     {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
-    <script type="text/javascript" src="{{asset('public/js/app.js')}}" async></script>
 @endsection

@@ -43,7 +43,17 @@ class CollaboratorController extends Controller
 
     public function store(StoreRequest $request)
     {
-        Collaborator::create($request->all());
+        if($request->hasFile('picture')){
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/archivos/image_collaborator"),$image_name);
+
+            $collaborator = Collaborator::create($request->all()+[
+                'image'=>$image_name,
+            ]);
+        } else {
+            $collaborator = Collaborator::create($request->all());
+        }
         return redirect()->route('collaborators.index')->with('status', 'El colaborador ha sido registrado con exito');
     }
 

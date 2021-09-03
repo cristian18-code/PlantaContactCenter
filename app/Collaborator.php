@@ -8,7 +8,7 @@ class Collaborator extends Model
 {
     protected $fillable = [
         'cedula', 'nombre', 'Fingreso', 'contrato', 'supervisor', 'campania', 'cargoNomina', 'sueldo',
-        'genero', 'localidad', 'barrio', 'hijos', 'estrato', 'nivelEstudio', 'estado'
+        'genero', 'localidad', 'barrio', 'image', 'hijos', 'estrato', 'nivelEstudio', 'estado'
     ];
 
     public function novelties(){

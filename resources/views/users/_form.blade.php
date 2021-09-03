@@ -26,7 +26,7 @@
 @enderror
 <div class="form-group">
     <label for="password">Contraseña</label>
-    <input id="password" class="form-control @error('password') is-invalid @enderror" type="password" name="password"">
+    <input id="password" class="form-control @error('password') is-invalid @enderror" type="password" name="password">
 </div>
 @error('password')
 <div class="alert alert-danger mt-2">

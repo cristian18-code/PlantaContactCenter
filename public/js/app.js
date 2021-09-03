@@ -1952,15 +1952,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     name: "DatosLaborales";
+
+    this.mounted_image();
   },
   components: {
-    DatosPersonales: _components_collaborator_DatosPersonalesComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    DatosPersonales: _components_collaborator_DatosPersonalesComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    DatosLaborales: _components_collaborator_DatosLaboralesComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ['variable'],
   data: function data() {
@@ -1971,6 +1973,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    mounted_image: function mounted_image() {
+      if (this.collaborator.image != null) {
+        document.getElementById("cont-image").innerHTML = "<img src='../public/archivos/image_collaborator/" + this.collaborator.image + "' alt='profile' class='img-lg mb-3' />";
+      } else {
+        document.getElementById("cont-image").innerHTML = "<img src='../public/media/img/user.png' alt='profile' class='img-lg mb-3' />";
+      }
+    },
     changeVisibility: function changeVisibility() {
       this.mostrarDatosLaborales = !this.mostrarDatosLaborales;
       this.mostrarDatosPersonales = !this.mostrarDatosPersonales;
@@ -37883,11 +37892,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "border-bottom text-center pb-4" }, [
-      _c("h3"),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex justify-content-between" })
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "border-bottom text-center pb-4",
+        attrs: { id: "cont-image" }
+      },
+      [_c("div", { staticClass: "d-flex justify-content-between" })]
+    )
   }
 ]
 render._withStripped = true
@@ -50524,74 +50536,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/sb-admin-2/js/sb-admin-2.js":
-/*!********************************************!*\
-  !*** ./public/sb-admin-2/js/sb-admin-2.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function ($) {
-  "use strict"; // Start of use strict
-  // Toggle the side navigation
-
-  $("#sidebarToggle, #sidebarToggleTop").on('click', function (e) {
-    $("body").toggleClass("sidebar-toggled");
-    $(".sidebar").toggleClass("toggled");
-
-    if ($(".sidebar").hasClass("toggled")) {
-      $('.sidebar .collapse').collapse('hide');
-    }
-
-    ;
-  }); // Close any open menu accordions when window is resized below 768px
-
-  $(window).resize(function () {
-    if ($(window).width() < 768) {
-      $('.sidebar .collapse').collapse('hide');
-    }
-
-    ; // Toggle the side navigation when window is resized below 480px
-
-    if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
-      $("body").addClass("sidebar-toggled");
-      $(".sidebar").addClass("toggled");
-      $('.sidebar .collapse').collapse('hide');
-    }
-
-    ;
-  }); // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
-
-  $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function (e) {
-    if ($(window).width() > 768) {
-      var e0 = e.originalEvent,
-          delta = e0.wheelDelta || -e0.detail;
-      this.scrollTop += (delta < 0 ? 1 : -1) * 30;
-      e.preventDefault();
-    }
-  }); // Scroll to top button appear
-
-  $(document).on('scroll', function () {
-    var scrollDistance = $(this).scrollTop();
-
-    if (scrollDistance > 100) {
-      $('.scroll-to-top').fadeIn();
-    } else {
-      $('.scroll-to-top').fadeOut();
-    }
-  }); // Smooth scrolling using jQuery easing
-
-  $(document).on('click', 'a.scroll-to-top', function (e) {
-    var $anchor = $(this);
-    $('html, body').stop().animate({
-      scrollTop: $($anchor.attr('href')).offset().top
-    }, 1000, 'easeInOutExpo');
-    e.preventDefault();
-  });
-})(jQuery); // End of use strict
-
-/***/ }),
-
 /***/ "./public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js":
 /*!***********************************************************************!*\
   !*** ./public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js ***!
@@ -53496,15 +53440,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -53785,14 +53732,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./public/sb-admin-2/js/sb-admin-2.js ./public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js ./public/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js ***!
-  \******************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js ./public/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js ***!
+  \*****************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\PlantaContactCenter\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\xampp\htdocs\PlantaContactCenter\public\sb-admin-2\js\sb-admin-2.js */"./public/sb-admin-2/js/sb-admin-2.js");
 __webpack_require__(/*! C:\xampp\htdocs\PlantaContactCenter\public\sb-admin-2\vendor\bootstrap\js\bootstrap.bundle.min.js */"./public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\PlantaContactCenter\public\sb-admin-2\vendor\jquery-easing\jquery.easing.min.js */"./public/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js");
 

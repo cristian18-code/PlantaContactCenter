@@ -1,8 +1,7 @@
 <template>
 <div class="row">
     <div class="col-lg-4">
-        <div class="border-bottom text-center pb-4">
-            <h3></h3>
+        <div class="border-bottom text-center pb-4" id="cont-image">        
             <div class="d-flex justify-content-between">
             </div>
         </div>
@@ -48,9 +47,11 @@
     export default {
         mounted () {
             name: "DatosLaborales"
+            this.mounted_image();
         },
         components: {
-            DatosPersonales
+            DatosPersonales,
+            DatosLaborales
         },
         props: ['variable'],
         data: function(){            
@@ -61,6 +62,13 @@
             }
         },
         methods: {
+            mounted_image: function() {
+                if (this.collaborator.image != null) {
+                    document.getElementById("cont-image").innerHTML="<img src='../public/archivos/image_collaborator/"+this.collaborator.image+"' alt='profile' class='img-lg mb-3' />";
+                } else {
+                    document.getElementById("cont-image").innerHTML="<img src='../public/media/img/user.png' alt='profile' class='img-lg mb-3' />";
+                }
+            },
             changeVisibility: function () {                
                 this.mostrarDatosLaborales = !this.mostrarDatosLaborales;
                 this.mostrarDatosPersonales = !this.mostrarDatosPersonales;
