@@ -27,6 +27,8 @@ class CreateInfMedicalsTable extends Migration
             $table->integer('peso')->length(20)->nullable();
             $table->string('estatura')->nullable();
             $table->string('rh', 50)->nullable();
+
+            $table->timestamps();
         });
     }
 

@@ -7,6 +7,7 @@ use App\Exports\CollaboratorsExport;
 use Illuminate\Http\Request;
 Use App\Http\Requests\collaborators\StoreRequest;
 use App\Http\Requests\collaborators\UpdateRequest;
+use App\Inf_medical;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -77,6 +78,12 @@ class CollaboratorController extends Controller
             $collaborator->update($request->all()+[
                 'image'=>$image_name,
             ]);
+        } else {
+            $collaborator->update($request->all());
+        }
+        
+        if($collaborator->inf_medical == null){
+            $collaborator->inf_medical()->create($request->all());
         } else {
             $collaborator->inf_medical->update($request->all());
         }
