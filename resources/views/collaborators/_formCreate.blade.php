@@ -1,76 +1,76 @@
 <div class="row col-md-12">
-<div class="row col-md-8">
-    <div class="row col-md-12">
-        <div class="form-group col-md-6">
-            <label for="cedula">Cedula</label>
-            <input id="cedula" name="cedula" class="@error('cedula') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('cedula') }}" placeholder="cedula" >
-            @error('cedula')
+    <div class="row col-md-8">
+        <div class="row col-md-12">
+            <div class="form-group col-md-6">
+                <label for="cedula">Cedula</label>
+                <input id="cedula" name="cedula" class="@error('cedula') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('cedula') }}" placeholder="cedula" >
+                @error('cedula')
+                    <div class="alert alert-danger mt-2">
+                        <ul class="m-0">
+                            @foreach($errors->get('cedula') as $error)
+                                <li> {{ $error }} </li>
+                            @endforeach
+                        </ul>        
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" class="@error('nombre') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('nombre') }}" placeholder="Nombre" >
+                @error('nombre')
                 <div class="alert alert-danger mt-2">
                     <ul class="m-0">
-                        @foreach($errors->get('cedula') as $error)
+                        @foreach($errors->get('nombre') as $error)
                             <li> {{ $error }} </li>
                         @endforeach
                     </ul>        
                 </div>
-            @enderror
-        </div>
-        <div class="form-group col-md-6">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" class="@error('nombre') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('nombre') }}" placeholder="Nombre" >
-            @error('nombre')
-            <div class="alert alert-danger mt-2">
-                <ul class="m-0">
-                    @foreach($errors->get('nombre') as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>        
+                @enderror
             </div>
-            @enderror
+        </div>
+        <div class="row col-md-12">
+            <div class="form-group col-md-6">
+                <label for="Fingreso">Fecha de ingreso </label>
+                <input id="Fingreso" name="Fingreso" class="@error('Fingreso') is-invalid @enderror form-control" value="{{old('Fingreso')}}" type="date">
+                @error('Fingreso')
+                <div class="alert alert-danger mt-2">
+                    <ul class="m-0">
+                        @foreach($errors->get('Fingreso') as $error)
+                            <li> {{ $error }} </li>
+                        @endforeach
+                    </ul>        
+                </div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="contrato">Tipo de contrato</label>
+                <select name="contrato" id="contrato" class="@error('contrato') is-invalid @enderror form-control">
+                    @if (old('contrato') != null)
+                        <option value="{{old('contrato')}}">{{old('contrato')}}</option>
+                    @else
+                        <option value="" hidden>Selecciona una opcion</option>
+                    @endif
+                    <option value="TERMINO INDEFINIDO">TERMINO INDEFINIDO</option>
+                    <option value="TERMINO FIJO">TERMINO FIJO</option>
+                    <option value="OBRA Y/O LABOR">OBRA Y/O LABOR</option>
+                </select>
+                @error('contrato')
+                <div class="alert alert-danger mt-2">
+                    <ul class="m-0">
+                        @foreach($errors->get('contrato') as $error)
+                            <li> {{ $error }} </li>
+                        @endforeach
+                    </ul>        
+                </div>
+                @enderror
+            </div>
         </div>
     </div>
-    <div class="row col-md-12">
-        <div class="form-group col-md-6">
-            <label for="Fingreso">Fecha de ingreso </label>
-            <input id="Fingreso" name="Fingreso" class="@error('Fingreso') is-invalid @enderror form-control" value="{{old('Fingreso')}}" type="date">
-            @error('Fingreso')
-            <div class="alert alert-danger mt-2">
-                <ul class="m-0">
-                    @foreach($errors->get('Fingreso') as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>        
-            </div>
-            @enderror
-        </div>
-        <div class="form-group col-md-6">
-            <label for="contrato">Tipo de contrato</label>
-            <select name="contrato" id="contrato" class="@error('contrato') is-invalid @enderror form-control">
-                @if (old('contrato') != null)
-                    <option value="{{old('contrato')}}">{{old('contrato')}}</option>
-                @else
-                    <option value="" hidden>Selecciona una opcion</option>
-                @endif
-                <option value="TERMINO INDEFINIDO">TERMINO INDEFINIDO</option>
-                <option value="TERMINO FIJO">TERMINO FIJO</option>
-                <option value="OBRA Y/O LABOR">OBRA Y/O LABOR</option>
-            </select>
-            @error('contrato')
-            <div class="alert alert-danger mt-2">
-                <ul class="m-0">
-                    @foreach($errors->get('contrato') as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>        
-            </div>
-            @enderror
-        </div>
+    <div class="col-md-4 cont-img">    
+        <label for="picture" class="input-label">
+            <img src="{{asset('public/media/img/user.png')}}" alt="Avatar" class="img-circle previsualizar" />
+        </label><input type="file" style="display: none" name="picture" id="picture" />
     </div>
-</div>
-<div class="col-md-4 cont-img">    
-    <label for="picture" class="input-label">
-        <img src="{{asset('public/media/img/user.png')}}" alt="Avatar" class="img-circle previsualizar" />
-    </label><input type="file" style="display: none" name="picture" id="picture" />
-</div>
 </div>
 <div class="row">
     <div class="form-group col-md-6">

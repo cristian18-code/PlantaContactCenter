@@ -34,17 +34,20 @@ class UpdateRequest extends FormRequest
                 'cargoNomina'=>'required|string|max:255',
                 'sueldo'=>'required|integer',
                 // update
+                'Fingreso'=>'date',
                 'genero'=>'string|exists:collaborators,genero|max:255',
-                'localidad'=>'required|string|max:255|exists:collaborators,localidad',
-                'barrio'=>'required|string|max:255',
-                'hijos'=>'required|string|max:10',
-                'estrato'=>'required|integer|digits_between:1,2|max:10',
-                'nivelEstudio'=>'required|string|max:255|exists:collaborators,nivelEstudio',
+                'genero'=>'string|exists:collaborators,genero|max:255',
+                'localidad'=>'string|max:255|exists:collaborators,localidad',
+                'barrio'=>'string|max:255',
+                'hijos'=>'string|max:10',
+                'estrato'=>'integer|digits_between:1,2|max:10',
+                'nivelEstudio'=>'string|max:255|exists:collaborators,nivelEstudio',
             ];
         } else {
             return [
                 // update
-                'genero'=>'string|exists:collaborators,genero|max:255',
+                'Fingreso'=>'required|date',
+                'genero'=>'required|string|exists:collaborators,genero|max:255',
                 'localidad'=>'required|string|max:255|exists:collaborators,localidad',
                 'barrio'=>'required|string|max:255',
                 'hijos'=>'required|string|max:10',
@@ -85,6 +88,9 @@ class UpdateRequest extends FormRequest
                 'sueldo.integer'=>'El valor debe ser numerico, no se permiten espacios, puntos ni comas',
     
                 // update
+                'Fingreso.required'=>'Este campo es requerido',
+                'Fingreso.date'=>'El valor no es correcto',
+
                 'genero.string '=>'El valor no es correcto',
                 'genero.exists'=>'El genero ingresado no existe.',
                 'genero.max'=>'Se permiten como maximo 255 caracteres',
@@ -116,6 +122,9 @@ class UpdateRequest extends FormRequest
         } else {
             return [
                 // update
+                'Fingreso.required'=>'Este campo es requerido',
+                'Fingreso.date'=>'El valor no es correcto',
+
                 'genero.string '=>'El valor no es correcto',
                 'genero.exists'=>'El genero ingresado no existe.',
                 'genero.max'=>'Se permiten como maximo 255 caracteres',
@@ -127,8 +136,7 @@ class UpdateRequest extends FormRequest
     
                 'barrio.required'=>'Este campo es requerido',
                 'barrio.string'=>'El valor no es correcto',
-                'barrio.max'=>'Se permiten como maximo 255 caracteres',
-                
+                'barrio.max'=>'Se permiten como maximo 255 caracteres',               
                 
                 'hijos.required'=>'Este campo es requerido',
                 'hijos.string'=>'El valor no es correcto',

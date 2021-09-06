@@ -69,7 +69,18 @@ class CollaboratorController extends Controller
 
     public function update(UpdateRequest $request, Collaborator $collaborator)
     {
-        $collaborator->update($request->all());
+        if($request->hasFile('picture')){
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/archivos/image_collaborator"),$image_name);
+
+            $collaborator->update($request->all()+[
+                'image'=>$image_name,
+            ]);
+        } else {
+            $collaborator->update($request->all());
+        }
+
         return redirect()->route('collaborators.index')->with('status', 'El colaborador '.$collaborator->nombre.' ha sido actualizado con exito');
     }
 
