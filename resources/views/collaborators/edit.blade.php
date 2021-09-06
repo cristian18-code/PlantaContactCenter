@@ -5,10 +5,13 @@
     form, form select, form input {
         font-size: .85rem !important;
     }
+    form textarea {
+        resize: none;
+    }
     .cont-datos{
         border: solid .1rem #96bbf1;
     }
-    .cont-datos div.text{
+    .cont-datos .text{
         color: #6e6e6e;
         margin-bottom: 1rem;
     }

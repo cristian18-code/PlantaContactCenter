@@ -245,6 +245,32 @@
             @enderror
         </div>
         <div class="col-md-6 mt-2">
+            <label for="correo">Correo</label>
+            <input type="email" name="correo" id="correo" class="form-control @error('correo') is-invalid @enderror" value="{{old('correo', $collaborator->correo)}}">
+            @error('correo')
+            <div class="alert alert-danger mt-2">
+                <ul class="m-0">
+                    @foreach($errors->get('correo') as $error)
+                        <li> {{ $error }} </li>
+                    @endforeach
+                </ul>        
+            </div>
+            @enderror
+        </div>
+        <div class="col-md-6 mt-2">
+            <label for="celular">Celular</label>
+            <input type="text" name="celular" id="celular" class="form-control @error('celular') is-invalid @enderror" value="{{old('celular', $collaborator->celular)}}">
+            @error('celular')
+            <div class="alert alert-danger mt-2">
+                <ul class="m-0">
+                    @foreach($errors->get('celular') as $error)
+                        <li> {{ $error }} </li>
+                    @endforeach
+                </ul>        
+            </div>
+            @enderror
+        </div>
+        <div class="col-md-6 mt-2">
             <label for="localidad" class="form-label">Localidad</label>
             <input type="text" name="localidad" id="localidad" value="{{old('localidad', $collaborator->localidad)}}" class="form-control @error('localidad') is-invalid @enderror">
             @error('localidad')
@@ -331,7 +357,7 @@
             @enderror
         </div>
     </div>
-    <div class="row cont-datos col-md-3 p-1 ml-1 mt-1 mb-1 m-right">
+    <div class="row cont-datos col-md-3 p-1 ml-1 mt-1 mb-1">
         <div class="col-md-12 text">
             <h5>Imagen</h5>
             <div class="col-md-12 input-label">
@@ -344,6 +370,138 @@
                         <img src="{{asset('public/media/img/user.png')}}" alt="Imagen colaborador" class="img-circle previsualizar" />
                     </label><input type="file" style="display: none" name="picture" id="picture" />
                 @endif
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="row cont-datos col-md-12 m-2">
+        <div class="row col-md-12 text">
+            <h5>Información Medica</h5>
+        </div>
+        <div class="row col-md-12">
+            <div class="row col-md-6">
+                <div class="form-group row col-md-12">
+                    <label for="eps" class="col-md-4 col-form-label">EPS</label>
+                    <div class="col-md-8">
+                        <input id="eps" name="eps" class="@error('eps') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('eps', @$collaborator->inf_medical->eps) }}">
+                    </div>
+                    @error('eps')
+                    <div class="alert alert-danger mt-2">
+                        <ul class="m-0">
+                            @foreach($errors->get('eps') as $error)
+                                <li> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-group row col-md-12">
+                    <label for="plan_mp" class="col-md-4 col-form-label">Plan MP</label>
+                    <div class="col-md-8">
+                        <input id="plan_mp" name="plan_mp" class="@error('plan_mp') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('plan_mp', @$collaborator->inf_medical->plan_mp) }}">
+                    </div>
+                    @error('plan_mp')
+                    <div class="alert alert-danger mt-2">
+                        <ul class="m-0">
+                            @foreach($errors->get('plan_mp') as $error)
+                                <li> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-group row col-md-12">
+                    <label for="alergias" class="col-md-4 col-form-label">Alergias</label>
+                    <div class="col-md-8">
+                        <input type="text" name="alergias" id="alergias" class="form-control @error('alergias') is-invalid @enderror" autocomplete="off" value="{{ old('alergias', @$collaborator->inf_medical->alergias) }}">
+                    </div>
+                    @error('alergias')
+                    <div class="alert alert-danger mt-2">
+                        <ul class="m-0">
+                            @foreach($errors->get('alergias') as $error)
+                                <li> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @enderror
+                </div>
+                <div class="row form-group col-md-12">
+                    <label for="medicamentos" class="col-md-4 col-form-label">Medicamentos</label>
+                    <div class="col-md-8">
+                        <input type="text" name="medicamentos" id="medicamentos" class="form-control @error('medicamentos') is-invalid @enderror" autocomplete="off" value="{{ old('medicamentos', @$collaborator->inf_medical->medicamentos) }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-6">
+                <div class="form-group row col-md-12">
+                    <label for="antecedentes">Antecedentes medicos</label>
+                    <textarea name="antecedentes" id="antecedentes" rows="4" class="form-control @error('antecedentes') is-invalid @enderror">{{ old('antecedentes', @$collaborator->inf_medical->antecedentes) }}</textarea>
+                    @error('antecedentes')
+                    <div class="alert alert-danger mt-2">
+                        <ul class="m-0">
+                            @foreach($errors->get('antecedentes') as $error)
+                                <li> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @enderror
+                </div>
+                <div class="row col-md-12">
+                    <div class="row col-md-6">
+                        <label for="peso" class="col-md-4 col-form-label">Peso</label>
+                        <div class="col-md-6">
+                            <input type="text" name="peso" id="peso" class="form-control @error('peso') is-invalid @enderror" value="{{ old('peso', @$collaborator->inf_medical->peso) }}">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="col-form-label text">Kg</label>
+                        </div>
+                        @error('peso')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('antecedentes') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @enderror
+                    </div>    
+                    <div class="row col-md-6">
+                        <label for="estatura" class="col-md-5 col-form-label">Estatura</label>
+                        <div class="col-md-5">
+                            <input type="text" name="estatura" id="estatura" class="form-control @error('estatura') is-invalid @enderror" value="{{ old('estatura', @$collaborator->inf_medical->estatura) }}">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="col-form-label text">Mts</label>
+                        </div>
+                        @error('estatura')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('estatura') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="row form-group col-md-12">
+                            <label for="rh" class="col-form-label col-md-4">RH</label>
+                            <div class="col-md-8">
+                                <input type="text" name="rh" id="rh" class="form-control @error('rh') is-invalid @enderror" value="{{ old('rh', @$collaborator->inf_medical->rh) }}">
+                            </div>
+                            @error('rh')
+                            <div class="alert alert-danger mt-2">
+                                <ul class="m-0">
+                                    @foreach($errors->get('rh') as $error)
+                                        <li> {{ $error }} </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
