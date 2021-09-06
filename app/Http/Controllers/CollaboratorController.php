@@ -78,7 +78,7 @@ class CollaboratorController extends Controller
                 'image'=>$image_name,
             ]);
         } else {
-            $collaborator->update($request->all());
+            $collaborator->inf_medical->update($request->all());
         }
 
         return redirect()->route('collaborators.index')->with('status', 'El colaborador '.$collaborator->nombre.' ha sido actualizado con exito');

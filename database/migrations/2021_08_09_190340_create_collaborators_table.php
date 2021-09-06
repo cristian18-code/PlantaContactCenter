@@ -34,8 +34,11 @@ class CreateCollaboratorsTable extends Migration
             $table->string('nomCeco')->nullable();
             $table->string('estado')->nullable()->default('ACTIVO');
             $table->bigInteger('sueldo');
-            
             $table->float('distribucion', 8,1)->nullable();
+            
+            $table->string('correo')->nullable();
+            $table->string('celular')->nullable();
+
             $table->string('site')->nullable();
             $table->integer('login')->nullable();
             $table->date('mes')->nullable();
