@@ -70,16 +70,25 @@ class CollaboratorController extends Controller
 
     public function update(UpdateRequest $request, Collaborator $collaborator)
     {
+        
         if($request->hasFile('picture')){
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/archivos/image_collaborator"),$image_name);
-
-            $collaborator->update($request->all()+[
+            
+            $collaborator->update($request->except('estado', 'nivel', 'titulo')+[
                 'image'=>$image_name,
             ]);
         } else {
-            $collaborator->update($request->all());
+            $collaborator->update($request->except('estado', 'nivel', 'titulo'));
+        }
+
+        if (isset($request->nivel)) {
+            foreach ($request->nivel as $key => $studie) {
+                $results[] = array("nivel"=>$request->nivel[$key],
+                "titulo"=>$request->titulo[$key], "estado"=>$request->estado[$key]);
+            }
+            $collaborator->studies()->createMany($results); 
         }
         
         if($collaborator->inf_medical == null){

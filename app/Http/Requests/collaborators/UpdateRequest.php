@@ -36,7 +36,6 @@ class UpdateRequest extends FormRequest
                 // update
                 'Fnacimiento'=>'date',
                 'genero'=>'string|exists:collaborators,genero|max:255',
-                'genero'=>'string|exists:collaborators,genero|max:255',
                 'localidad'=>'string|max:255|exists:collaborators,localidad',
                 'barrio'=>'string|max:255',
                 'hijos'=>'string|max:10',
@@ -48,6 +47,7 @@ class UpdateRequest extends FormRequest
                 // update
                 'Fnacimiento'=>'required|date',
                 'genero'=>'required|string|exists:collaborators,genero|max:255',
+                'celular'=>'required',
                 'localidad'=>'required|string|max:255|exists:collaborators,localidad',
                 'barrio'=>'required|string|max:255',
                 'hijos'=>'required|string|max:10',

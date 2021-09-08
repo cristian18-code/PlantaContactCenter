@@ -16,6 +16,11 @@ class Collaborator extends Model
         return $this->hasOne(Inf_medical::class);
     }
 
+    public function studies()
+    {
+        return $this->hasMany(Study::class);
+    }
+
     public function novelties(){
         return $this->hasMany(Novelty::class);
     }

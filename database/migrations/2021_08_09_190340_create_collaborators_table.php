@@ -23,6 +23,7 @@ class CreateCollaboratorsTable extends Migration
             $table->date('Fnacimiento')->nullable();
             $table->date('Fingreso');
             $table->date('finContrato')->nullable();
+            $table->string('motivoRetiro')->nullable();
             $table->string('contrato');
 
             $table->string('supervisor');
@@ -41,16 +42,13 @@ class CreateCollaboratorsTable extends Migration
 
             $table->string('site')->nullable();
             $table->integer('login')->nullable();
-            $table->date('mes')->nullable();
             $table->string('tipo')->nullable();
             $table->enum('genero', ['Masculino', 'Femenino'])->nullable();
             $table->string('localidad')->nullable();
             $table->string('estrato')->nullable();
             $table->string('hijos')->nullable();
-            $table->string('nivelEstudio')->nullable();
             $table->string('barrio')->nullable();
-            $table->string('image')->nullable();;
-            $table->string('periodosPendientes')->nullable();
+            $table->string('image')->nullable();
             $table->enum('vacaciones', ['No programar', 'Tomadas', 'Programada'])->nullable();
             $table->date('Fdia_familia')->nullable();
             $table->string('mesDiaFamilia')->nullable();
@@ -60,11 +58,6 @@ class CreateCollaboratorsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('collaborators');

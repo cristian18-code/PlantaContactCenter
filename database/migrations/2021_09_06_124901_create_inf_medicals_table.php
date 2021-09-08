@@ -16,7 +16,7 @@ class CreateInfMedicalsTable extends Migration
         Schema::create('inf_medicals', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('collaborator_id');
+            $table->unsignedBigInteger('collaborator_id')->unique();
             $table->foreign('collaborator_id')->references('id')->on('collaborators');
 
             $table->string('eps');

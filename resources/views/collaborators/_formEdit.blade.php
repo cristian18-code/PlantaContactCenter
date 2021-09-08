@@ -10,16 +10,16 @@
                     <label for="cedula" class="col-md-4 col-form-label">Cedula</label>
                     <div class="col-md-8">
                         <input id="cedula" name="cedula" class="@error('cedula') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ $collaborator->cedula }}" disabled>
+                        @error('cedula')
+                            <div class="alert alert-danger mt-2">
+                                <ul class="m-0">
+                                    @foreach($errors->get('cedula') as $error)
+                                        <li> {{ $error }} </li>
+                                    @endforeach
+                                </ul>        
+                            </div>
+                        @enderror
                     </div>
-                    @error('cedula')
-                        <div class="alert alert-danger mt-2">
-                            <ul class="m-0">
-                                @foreach($errors->get('cedula') as $error)
-                                    <li> {{ $error }} </li>
-                                @endforeach
-                            </ul>        
-                        </div>
-                    @enderror
                 </div>
 
                 <div class="form-group row col-md-6">
@@ -37,16 +37,16 @@
                             <option {{ (old('supervisor', $collaborator->supervisor) == 'SANTOS BECERRA DIANA MARCELA') ? 'selected' : '' }} value="SANTOS BECERRA DIANA MARCELA">SANTOS BECERRA DIANA MARCELA</option>
                             <option {{ (old('supervisor', $collaborator->supervisor) == 'VALLEJO RIAÑO JOHN FREDY') ? 'selected' : '' }} value="VALLEJO RIAÑO JOHN FREDY">VALLEJO RIAÑO JOHN FREDY</option>
                         </select>
+                        @error('supervisor')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('supervisor') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @error('supervisor')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('supervisor') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
-                    </div>
-                    @enderror
                 </div>  
 
             </div>
@@ -55,16 +55,16 @@
                     <label for="nombre" class="col-md-4 col-form-label">Nombre</label>
                     <div class="col-md-8">
                         <input id="nombre" name="nombre" class="@error('nombre') is-invalid @enderror form-control" type="text" autocomplete="off" value="{{ old('nombre', $collaborator->nombre) }}">
+                        @error('nombre')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('nombre') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @error('nombre')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('nombre') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
-                    </div>
-                    @enderror
                 </div>
                 <div class="form-group row col-md-6">
                     <label for="campania" class="col-md-4 col-form-label">Campaña</label>
@@ -92,16 +92,16 @@
                             <option {{ (old('campania', $collaborator->campania) == 'Validacion Afiliaciones Y Perfilamiento') ? 'selected' : '' }} value="Validacion Afiliaciones Y Perfilamiento">Validacion Afiliaciones Y Perfilamiento</option>
                             <option {{ (old('campania', $collaborator->campania) == 'Vacunacion') ? 'selected' : '' }} value="Vacunacion">Vacunacion</option>
                         </select>
+                        @error('campania')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('campania') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @error('campania')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('campania') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
-                    </div>
-                    @enderror
                 </div>
             </div>
             <div class="row col-md-12">
@@ -109,16 +109,16 @@
                     <label for="Fingreso" class="col-md-4 col-form-label">Ingreso</label>
                     <div class="col-md-8">
                         <input id="Fingreso" name="Fingreso" class="@error('Fingreso') is-invalid @enderror form-control" value="{{old('Fingreso', $collaborator->Fingreso)}}" type="date">
+                        @error('Fingreso')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('Fingreso') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @error('Fingreso')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('Fingreso') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
-                    </div>
-                    @enderror
                 </div>
                 <div class="form-group row col-md-6">
                     <label for="cargoNomina" class="col-md-4 col-form-label">Cargo</label>
@@ -143,16 +143,16 @@
                             <option {{ (old('cargoNomina', $collaborator->cargoNomina) == 'Gestor Tiempo Real') ? 'selected' : '' }} value="Gestor Tiempo Real">Gestor Tiempo Real</option>
                             <option {{ (old('cargoNomina', $collaborator->cargoNomina) == 'Supervisor Operativo Contac Ce') ? 'selected' : '' }} value="Supervisor Operativo Contac Ce">Supervisor Operativo Contac</option>
                         </select>
+                        @error('cargoNomina')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('cargoNomina') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @error('cargoNomina')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('cargoNomina') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
-                    </div>
-                    @enderror
                 </div>
             </div>
             <div class="row col-md-12">
@@ -165,36 +165,36 @@
                             <option {{ (old('contrato', $collaborator->contrato) == 'TERMINO FIJO') ? 'selected' : '' }} value="TERMINO FIJO">TERMINO FIJO</option>
                             <option {{ (old('contrato', $collaborator->contrato) == 'OBRA Y/O LABOR') ? 'selected' : '' }} value="OBRA Y/O LABOR">OBRA Y/O LABOR</option>
                         </select>
+                        @error('contrato')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('contrato') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @error('contrato')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('contrato') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
-                    </div>
-                    @enderror
                 </div>
                 <div class="form-group row col-md-6">
                     <label for="sueldo" class="col-md-4 col-form-label">Sueldo</label>
-                        <div class="col-md-8">
-                            <div class="input-group mb-2 mr-sm-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">$</div>
-                                </div>
-                                <input type="text" class="@error('sueldo') is-invalid @enderror form-control" value="{{old('sueldo', $collaborator->sueldo)}}" id="sueldo" name="sueldo">
+                    <div class="col-md-8">
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
                             </div>
+                            <input type="text" class="@error('sueldo') is-invalid @enderror form-control" value="{{old('sueldo', $collaborator->sueldo)}}" id="sueldo" name="sueldo">
                         </div>
-                    @error('sueldo')
-                    <div class="alert alert-danger mt-2">
-                        <ul class="m-0">
-                            @foreach($errors->get('sueldo') as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>        
+                        @error('sueldo')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('sueldo') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
                     </div>
-                    @enderror
                 </div>
             </div>
         </div>
@@ -360,17 +360,17 @@
     <div class="row cont-datos col-md-3 p-1 ml-1 mt-1 mb-1">
         <div class="col-md-12 text">
             <h5>Imagen</h5>
-            <div class="col-md-12 input-label">
-                @if ($collaborator->image != null)
-                    <label for="picture" class="input-label">
-                        <img src="{{asset('public/archivos/image_collaborator/'.$collaborator->image)}}" alt="Imagen colaborador" class="img-circle previsualizar" />
-                    </label><input type="file" style="display: none" name="picture" id="picture" />
-                @else
-                    <label for="picture" class="input-label">
-                        <img src="{{asset('public/media/img/user.png')}}" alt="Imagen colaborador" class="img-circle previsualizar" />
-                    </label><input type="file" style="display: none" name="picture" id="picture" />
-                @endif
-            </div>
+        </div>
+        <div class="col-md-12 input-label">
+            @if ($collaborator->image != null)
+                <label for="picture" class="input-label my-auto">
+                    <img src="{{asset('public/archivos/image_collaborator/'.$collaborator->image)}}" alt="Imagen colaborador" class="img-circle previsualizar" />
+                </label><input type="file" style="display: none" name="picture" id="picture" />
+            @else
+                <label for="picture" class="input-label my-auto">
+                    <img src="{{asset('public/media/img/user.png')}}" alt="Imagen colaborador" class="img-circle previsualizar" />
+                </label><input type="file" style="display: none" name="picture" id="picture" />
+            @endif
         </div>
     </div>
 </div>

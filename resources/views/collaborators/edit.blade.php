@@ -47,6 +47,14 @@
                     
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Actualizar informacion</h4>
+                        <div class="btn-group" role="group" aria-label="Button group">
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#inf_academicaModal">
+                                Academica
+                            </button>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#inf_familiarModal">
+                                Familiar
+                            </button>
+                        </div>
                     </div>
                     {!! Form::model($collaborator, ['route'=>['collaborators.update', $collaborator], 'method'=>'PUT', 'class'=>'row g-3', 'files'=>true]) !!}
                         @include('collaborators._formEdit')
@@ -54,6 +62,52 @@
                         <a href="{{route('collaborators.index')}}" class="btn btn-danger mr-2 float-right col-2">
                             Cancelar
                         </a>
+                        {{-- Modals --}}
+                            <!-- Academica -->
+                            <div class="modal fade" id="inf_academicaModal" tabindex="-1" aria-labelledby="inf_academicaModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="inf_academicaModalLabel">Información Academica</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @include('collaborators._formAcademico')
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container">
+                                            <button type="button" class="btn btn-primary btn-icon-split row float-left" id="btn_addStudie">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                <span class="text">Agregar estudio</span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger float-right" id="closeAcademico" data-dismiss="modal">Cerrar</button>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- Academica -->
+                            <!-- Familiar -->
+                            <div class="modal fade" id="inf_familiarModal" tabindex="-1" aria-labelledby="inf_familiarModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="inf_familiarModalLabel">Información Familiar</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @include('collaborators._formFamiliar')
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="closeAcademico" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- Familar -->
+                        {{-- Modals --}}
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -62,6 +116,8 @@
 </div>
 @endsection
 @section('scripts')
+    {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
+    {!! Html::script('public/media/js/studies_collaborator.js') !!}
     {!! Html::script('public/media/js/image_collaborator.js') !!}
     {!! Html::script('public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}    
 @endsection

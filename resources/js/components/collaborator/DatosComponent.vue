@@ -63,10 +63,10 @@
         },
         methods: {
             mounted_image: function() {
-                if (this.collaborator.image != null) {
-                    document.getElementById("cont-image").innerHTML="<img src='../public/archivos/image_collaborator/"+this.collaborator.image+"' alt='profile' class='img-lg mb-3' />";
-                } else {
+                if (this.collaborator.image == null || this.collaborator.image == '') {
                     document.getElementById("cont-image").innerHTML="<img src='../public/media/img/user.png' alt='profile' class='img-lg mb-3' />";
+                } else {
+                    document.getElementById("cont-image").innerHTML="<img src='../public/archivos/image_collaborator/"+this.collaborator.image+"' alt='profile' class='img-lg mb-3' />";
                 }
             },
             changeVisibility: function () {                
