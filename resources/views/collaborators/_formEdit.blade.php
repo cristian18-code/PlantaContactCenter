@@ -296,7 +296,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-4 mt-2">
+        <div class="col-6 mt-2">
             <label for="hijos" class="form-label">¿Tiene hijos?</label>
             <select name="hijos" id="hijos" class="form-control">
                 @if (old('hijos', $collaborator->hijos) != null)
@@ -318,38 +318,13 @@
             </div>
             @enderror
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-6 mt-2">
             <label for="estrato" class="form-label ">Estrato</label>
             <input type="text" class="form-control @error('estrato') is-invalid @enderror" name="estrato" id="estrato" value="{{old('estrato', $collaborator->estrato)}}">
             @error('estrato')
             <div class="alert alert-danger mt-2">
                 <ul class="m-0">
                     @foreach($errors->get('estrato') as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>        
-            </div>
-            @enderror
-        </div>
-        <div class="col-md-4 mt-2 mb-4">
-            <label for="nivelEstudio" class="form-label">Nivel de estudio</label>
-            <select id="nivelEstudio" name="nivelEstudio" class="form-control form-select @error('nivelEstudio') is-invalid @enderror">
-                @if (old('nivelEstudio', $collaborator->nivelEstudio) != null)
-                    <option value="{{old('nivelEstudio', $collaborator->nivelEstudio)}}">{{old('nivelEstudio', $collaborator->nivelEstudio)}}</option>
-                @else
-                    <option value="" hidden>Selecciona una opcion</option>
-                @endif
-                <option value="Bachiller">Bachiller</option>
-                <option value="Master">Master</option>
-                <option value="Profesional">Profesional</option>
-                <option value="Sin Data">Sin Data</option>
-                <option value="Técnico">Técnico</option>
-                <option value="Tecnologo">Tecnologo</option>
-            </select>
-            @error('nivelEstudio')
-            <div class="alert alert-danger mt-2">
-                <ul class="m-0">
-                    @foreach($errors->get('nivelEstudio') as $error)
                         <li> {{ $error }} </li>
                     @endforeach
                 </ul>        

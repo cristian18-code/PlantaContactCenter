@@ -1,9 +1,9 @@
 <input type="hidden" name="studies" id="studies" disabled class="form-control" value="{{count($collaborator->studies)}}">
 <div id="cont-studies" class="row col-md-12">
     @foreach ($collaborator->studies as $studie)
-        <div class="row col-md-12" id="studiestudie">
+        <div class="row col-md-12">
             <div class="row col-md-12">
-                <h5 class="text-gray-700">Estudio {{$studie->id}}</h5>
+                <h5 class="text-gray-700">Estudio {{$loop->iteration}}</h5>
             </div>
             <div class="form-group col-md-4">
                 <label for="nivel">Nivel Educativo</label>
@@ -19,7 +19,4 @@
             </div>
         </div>            
     @endforeach
-</div>
-<div class="row col-md-12">
-    
 </div>

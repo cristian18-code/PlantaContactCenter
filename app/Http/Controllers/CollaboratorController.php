@@ -70,27 +70,41 @@ class CollaboratorController extends Controller
 
     public function update(UpdateRequest $request, Collaborator $collaborator)
     {
-        
+        // dd($request->all());
+        // requests
+        $collaborator_request = $request->except('estado', 'nivel', 'titulo', 'nombre_familier', 'fNacimiento_familier', 'genero_familier', 'ocupacion_familier', 'celular_familier', 'parentesco_familier');
+        // requests
+        // registrar colaboreadores 
         if($request->hasFile('picture')){
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/archivos/image_collaborator"),$image_name);
             
-            $collaborator->update($request->except('estado', 'nivel', 'titulo')+[
+            $collaborator->update($collaborator_request+[
                 'image'=>$image_name,
             ]);
         } else {
-            $collaborator->update($request->except('estado', 'nivel', 'titulo'));
+            $collaborator->update($collaborator_request);
         }
-
+        // registrar estudios
         if (isset($request->nivel)) {
             foreach ($request->nivel as $key => $studie) {
-                $results[] = array("nivel"=>$request->nivel[$key],
+                $studies[] = array("nivel"=>$request->nivel[$key],
                 "titulo"=>$request->titulo[$key], "estado"=>$request->estado[$key]);
             }
-            $collaborator->studies()->createMany($results); 
+            $collaborator->studies()->createMany($studies); 
         }
-        
+        // registrar familiares
+        if (isset($request->nombre_familier)) {
+            foreach ($request->nombre_familier as $key => $familier) {
+                $familiers[] = array("nombre"=>$request->nombre_familier[$key],
+                "fNacimiento"=>$request->fNacimiento_familier[$key], "genero"=>$request->genero_familier[$key],
+                "ocupacion"=>$request->ocupacion_familier[$key], "parentesco"=>$request->parentesco_familier[$key],
+                "celular"=>$request->celular_familier[$key], "emergencia"=>$request->emergencia_familier[$key]);
+            }
+            $collaborator->familiers()->createMany($familiers); 
+        }
+        // registrar info medica
         if($collaborator->inf_medical == null){
             $collaborator->inf_medical()->create($request->all());
         } else {

@@ -51,7 +51,7 @@
                             <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#inf_academicaModal">
                                 Academica
                             </button>
-                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#inf_familiarModal">
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#inf_familierModal">
                                 Familiar
                             </button>
                         </div>
@@ -90,7 +90,7 @@
                             </div>
                             <!-- Academica -->
                             <!-- Familiar -->
-                            <div class="modal fade" id="inf_familiarModal" tabindex="-1" aria-labelledby="inf_familiarModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="inf_familierModal" tabindex="-1" aria-labelledby="inf_familierModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -101,7 +101,15 @@
                                         @include('collaborators._formFamiliar')
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="closeAcademico" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                        <div class="container">
+                                            <button type="button" class="btn btn-primary btn-icon-split row float-left" id="btn_addFamilier">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                <span class="text">Agregar familiar</span>
+                                            </button>
+                                            <button type="button" id="closeFamily" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
                                 </div>
@@ -118,6 +126,7 @@
 @section('scripts')
     {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
     {!! Html::script('public/media/js/studies_collaborator.js') !!}
+    {!! Html::script('public/media/js/familiers_collaborator.js') !!}
     {!! Html::script('public/media/js/image_collaborator.js') !!}
     {!! Html::script('public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}    
 @endsection

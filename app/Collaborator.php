@@ -8,7 +8,7 @@ class Collaborator extends Model
 {
     protected $fillable = [
         'cedula', 'nombre', 'Fingreso', 'contrato', 'supervisor', 'campania', 'cargoNomina', 'sueldo',
-        'Fnacimiento', 'genero', 'correo', 'celular', 'localidad', 'barrio', 'image', 'hijos', 'estrato', 'nivelEstudio', 'estado'
+        'Fnacimiento', 'genero', 'correo', 'celular', 'localidad', 'barrio', 'image', 'hijos', 'estrato', 'estado'
     ];
     
     public function inf_medical()
@@ -19,6 +19,11 @@ class Collaborator extends Model
     public function studies()
     {
         return $this->hasMany(Study::class);
+    }
+
+    public function familiers()
+    {
+        return $this->hasMany(Inf_familier::class);
     }
 
     public function novelties(){

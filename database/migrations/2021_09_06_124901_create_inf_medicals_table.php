@@ -19,10 +19,10 @@ class CreateInfMedicalsTable extends Migration
             $table->unsignedBigInteger('collaborator_id')->unique();
             $table->foreign('collaborator_id')->references('id')->on('collaborators');
 
-            $table->string('eps');
-            $table->string('plan_mp')->default('N/A');
-            $table->string('alergias')->default('N/A');
-            $table->string('medicamentos')->default('N/A');
+            $table->string('eps')->nullable();
+            $table->string('plan_mp')->default('N/A')->nullable();
+            $table->string('alergias')->default('N/A')->nullable();
+            $table->string('medicamentos')->default('N/A')->nullable();
             $table->longText('antecedentes')->nullable();
             $table->integer('peso')->length(20)->nullable();
             $table->string('estatura')->nullable();
