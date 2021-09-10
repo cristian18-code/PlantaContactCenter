@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 Use App\Http\Requests\collaborators\StoreRequest;
 use App\Http\Requests\collaborators\UpdateRequest;
 use App\Inf_medical;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -60,6 +61,7 @@ class CollaboratorController extends Controller
 
     public function show(Collaborator $collaborator)
     {
+        $collaborator->edad = Carbon::createFromDate($collaborator->Fnacimiento)->age;
         return view('collaborators.show', compact('collaborator'));
     }
 

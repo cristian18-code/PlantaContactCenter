@@ -19,7 +19,6 @@ class CreateCollaboratorsTable extends Migration
             $table->bigInteger('cedula')->unique();
             $table->string('nombre');
 
-            $table->string('expedida')->nullable();
             $table->date('Fnacimiento')->nullable();
             $table->date('Fingreso');
             $table->date('finContrato')->nullable();

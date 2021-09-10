@@ -40,7 +40,6 @@ class UpdateRequest extends FormRequest
                 'barrio'=>'string|max:255',
                 'hijos'=>'string|max:10',
                 'estrato'=>'integer|digits_between:1,2|max:10',
-                'nivelEstudio'=>'string|max:255|exists:collaborators,nivelEstudio',
             ];
         } else {
             return [
@@ -52,7 +51,6 @@ class UpdateRequest extends FormRequest
                 'barrio'=>'required|string|max:255',
                 'hijos'=>'required|string|max:10',
                 'estrato'=>'required|integer|digits_between:1,2|max:10',
-                'nivelEstudio'=>'required|string|max:255|exists:collaborators,nivelEstudio',
             ];
         }
     }
@@ -113,11 +111,6 @@ class UpdateRequest extends FormRequest
                 'estrato.integer'=>'El valor no es correcto',
                 'estrato.digits_between'=>'Se permiten como maximo 2 caracteres',
                 'estrato.max'=>'El valor maximo ingresado puede ser 10',
-    
-                'nivelEstudio.required'=>'Este campo es requerido',
-                'nivelEstudio.string'=>'El valor no es correcto',
-                'nivelEstudio.max'=>'Solo se permiten 255 caracteres',
-                'nivelEstudio.exists'=>'El nivel de estudio ingresado no existe.',
             ];
         } else {
             return [
