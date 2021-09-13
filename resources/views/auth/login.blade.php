@@ -13,7 +13,8 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Bienvenido(a)!</h1>
+                                    <h1 class="h4 text-gray-900">Planta Contact Center</h1>
+                                    <h6 class="mb-4 text-gray-900">Bienvenido(a)</h6>
                                 </div>
 
                                 {!! Form::open(['route'=>'login', 'method'=>'POST', 'class'=>'user']) !!}
@@ -43,8 +44,8 @@
 
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="remember">
+                                            <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="custom-control-label text-gray-700" for="remember">
                                                 {{ __('Remember Me') }}
                                             </label>
                                         </div>
@@ -55,6 +56,13 @@
                                     </button>
                                 {!! Form::close() !!}
                                 <hr>
+                                @if (Route::has('password.request'))
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('password.request') }}">
+                                            {{ __('Forgot Password?') }}
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

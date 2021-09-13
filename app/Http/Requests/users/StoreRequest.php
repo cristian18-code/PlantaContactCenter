@@ -17,6 +17,7 @@ class StoreRequest extends FormRequest
         return [
             'name'=>['required','string','max:255','unique:users'],
             'username'=>'required|unique:users|string|max:100',
+            'email'=>'required|unique:users|string|max:150',
             'password'=>'required',
             'roles'=>'required|min:1|max:10'
         ];

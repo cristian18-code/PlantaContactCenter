@@ -16,7 +16,6 @@
     <!-- Custom styles for this template-->
     {!! Html::style('public/css/app.css') !!}
     @yield('styles')
-    {!! Html::script('public/media/js/datatables/jquery-3.5.1.js') !!}
 </head>
 <body id="page-top">
     <div id="app">

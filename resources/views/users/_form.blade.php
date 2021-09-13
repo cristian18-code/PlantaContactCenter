@@ -12,6 +12,19 @@
     </div>
 @enderror
 <div class="form-group">
+    <label for="email">Correo corporativo</label>
+    <input id="email" class="form-control @error('email') is-invalid @enderror" type="text" name="email" value="{{old('email', isset($user) ? $user->email : '')}}" autocomplete="off">
+</div>
+@error('email')
+    <div class="alert alert-danger mt-2">
+        <ul class="m-0">
+            @foreach($errors->get('email') as $error)
+                <li> {{ $error }} </li>
+            @endforeach
+        </ul>
+    </div>
+@enderror
+<div class="form-group">
     <label for="username">username</label>
     <input id="username" class="form-control @error('username') is-invalid @enderror" type="text" name="username" value="{{old('username', isset($user) ? $user->username : '')}}" autocomplete="off">
 </div>

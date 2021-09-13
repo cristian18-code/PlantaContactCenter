@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js([        
         'resources/js/app.js',
+        'public/sb-admin-2/vendor/jquery/jquery.min.js',
         'public/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js',
         'public/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js',
         ], 'public/js/app.js', 'public/js')

@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name'=>'Christian David Garzon Pinilla',
             'username'=>'christiangpi',
+            'email'=>'christiangpi@medcontactcenter.com.co',
             'password'=>'$2y$10$o659zRAez9pUMycEbVPh0OxR1wU0PY2lreS7CERzIEL/RonaLYodi',
         ]);
 
