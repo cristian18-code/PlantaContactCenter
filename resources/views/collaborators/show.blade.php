@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title', 'Datos de colaborador')
 @section('options')
-{{$collaborator->sueldo = number_format($collaborator->sueldo)}}
 @endsection
 @section('styles')
 <style type="text/css">
@@ -33,7 +32,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <datos-colaborador variable="{{ $collaborator }}"/>
+                    <datos-colaborador 
+                        colaborador="{{ json_encode($collaborator) }}"
+                    />
                 </div>
                 <div class="card-footer text-muted">
                     <a href="{{route('collaborators.index')}}" class="btn btn-primary float-right">Regresar</a>

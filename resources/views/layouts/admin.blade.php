@@ -10,9 +10,11 @@
     <link rel="icon" type="image/png" href="{{asset('public/media/img/planta.png')}}"/>
     <!-- Custom fonts for this template-->
     {!! Html::style('public/sb-admin-2/vendor/fontawesome-free/css/all.min.css') !!}
+    {!! Html::script('public/sb-admin-2/vendor/jquery/jquery.min.js') !!}
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    {{-- {!! Html::style('public/sb-admin-2/css/sb-admin-2.min.css') !!} --}}
     <!-- Custom styles for this template-->
     {!! Html::style('public/css/app.css') !!}
     @yield('styles')
@@ -46,7 +48,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span class="text-gray-800">Copyright &copy; Med Contact Center 2021</span>
+                            <span class="text-gray-800">Copyright &copy; MedContactCenter {{date('Y')}}</span>
                         </div>
                     </div>
                 </footer>

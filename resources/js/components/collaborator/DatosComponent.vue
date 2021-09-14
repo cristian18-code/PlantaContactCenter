@@ -8,57 +8,56 @@
         <div class="border-bottom py-4">
             <div class="list-group">
                 <button type="button"
-                        @click="changeVisibility"
+                        @click="changeVisibility('personales')"
                         v-bind:class="[mostrarDatosPersonales ? 'active' : '']"
                         class="list-group-item list-group-item-action">
                     Datos personales
                 </button>
                 <button type="button"
-                        @click="changeVisibility"
+                        @click="changeVisibility('laborales')"
                         v-bind:class="[mostrarDatosLaborales ? 'active' : '']"
                     class="list-group-item list-group-item-action">Datos laborales</button>
+                <button type="button"
+                        @click="changeVisibility('medicos')"
+                        v-bind:class="[mostrarDatosMedicos ? 'active' : '']"
+                        class="list-group-item list-group-item-action">
+                    Datos Medicos
+                </button>
                 <a  href="#"
                     data-toggle="modal" data-target="#exampleModal"
                     v-bind:class="[collaborator.estado == 'ACTIVO' ? 'btn-success' : 'btn-danger']"
-                    class="btn btn-block change-status">{{collaborator.estado}}</a>
+                    class="btn btn-block change-status">{{collaborator.estado}}
+                </a>
             </div>
         </div>
-    </div>                        
-    <div class="col-lg-8 pl-lg-5">
-        <div class="d-flex justify-content-between mb-4">
-            <div>
-                <h4 v-if="mostrarDatosPersonales">Información Personal</h4>
-                <h4 v-if="mostrarDatosLaborales">Información Laboral</h4>
-            </div>
-        </div>
-        <div class="profile-feed">
-
-            <datos-personales v-if="mostrarDatosPersonales" :colaborador="collaborator" />
-            <datos-laborales v-if="mostrarDatosLaborales" :colaborador="collaborator" />
-
-        </div>
-    </div>
+    </div>                   
+    <datos-personales v-if="mostrarDatosPersonales" :colaborador="collaborator" />
+    <datos-laborales v-if="mostrarDatosLaborales" :colaborador="collaborator" />
+    <datos-medicos v-if="mostrarDatosMedicos" :colaborador="collaborator" />     
 </div>
 </template>
 <script>
     import DatosPersonales from "../../components/collaborator/DatosPersonalesComponent.vue";
     import DatosLaborales from "../../components/collaborator/DatosLaboralesComponent.vue";
+    import DatosMedicos from "../../components/collaborator/DatosMedicos.vue";
 
     export default {
         mounted () {
-            name: "DatosLaborales"
+            name: "Datos"
             this.mounted_image();
+            console.log(this.collaborator);
         },
         components: {
             DatosPersonales,
-            DatosLaborales
+            DatosLaborales,
+            DatosMedicos
         },
-        props: ['variable'],
         data: function(){            
             return {
                 mostrarDatosPersonales: true,
                 mostrarDatosLaborales: false,
-                collaborator: JSON.parse(this.variable)
+                mostrarDatosMedicos: false,
+                collaborator: JSON.parse(this.$attrs.colaborador),
             }
         },
         methods: {
@@ -69,9 +68,30 @@
                     document.getElementById("cont-image").innerHTML="<img src='../public/archivos/image_collaborator/"+this.collaborator.image+"' alt='profile' class='img-lg mb-3' />";
                 }
             },
-            changeVisibility: function () {                
-                this.mostrarDatosLaborales = !this.mostrarDatosLaborales;
-                this.mostrarDatosPersonales = !this.mostrarDatosPersonales;
+            changeVisibility: function (mostrar) {
+
+                switch (mostrar) {
+                    case 'laborales':
+                        this.mostrarDatosLaborales = true;
+                        this.mostrarDatosPersonales = false;
+                        this.mostrarDatosMedicos = false;
+                        break;
+                    case 'medicos':
+                        this.mostrarDatosLaborales = false;
+                        this.mostrarDatosPersonales = false;
+                        this.mostrarDatosMedicos = true;
+                        break;
+                    case 'personales':
+                        this.mostrarDatosLaborales = false;
+                        this.mostrarDatosPersonales = true;
+                        this.mostrarDatosMedicos = false;
+                        break;
+                    default:
+                        this.mostrarDatosLaborales = false;
+                        this.mostrarDatosPersonales = true;
+                        this.mostrarDatosMedicos = false;
+                        break;
+                }
             }
         }
     }

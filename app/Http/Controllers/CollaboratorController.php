@@ -61,7 +61,11 @@ class CollaboratorController extends Controller
 
     public function show(Collaborator $collaborator)
     {
+        $collaborator->Fnacimiento = Carbon::parse($collaborator->Fnacimiento)->toFormattedDateString();
         $collaborator->edad = Carbon::createFromDate($collaborator->Fnacimiento)->age;
+        $collaborator->sueldo = number_format($collaborator->sueldo);
+        $collaborator->inf_medical = $collaborator->inf_medical;
+
         return view('collaborators.show', compact('collaborator'));
     }
 

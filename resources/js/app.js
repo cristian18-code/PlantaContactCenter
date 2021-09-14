@@ -4,8 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-
 window.Vue = require('vue');
 
 /**
@@ -22,7 +20,7 @@ window.Vue = require('vue');
 Vue.component('datos-colaborador', require('./components/collaborator/DatosComponent.vue').default);
 Vue.component('datos-personales', require('./components/collaborator/DatosPersonalesComponent.vue').default);
 Vue.component('datos-laborales', require('./components/collaborator/DatosLaboralesComponent.vue').default);
-
+Vue.component('datos-medicos', require('./components/collaborator/DatosMedicos.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

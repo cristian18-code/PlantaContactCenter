@@ -28,8 +28,7 @@ class CreateCollaboratorsTable extends Migration
             $table->string('supervisor');
             $table->string('campania');
             $table->string('cargoNomina');
-
-            $table->string('llave')->nullable();
+            
             $table->bigInteger('ceco')->nullable();
             $table->string('nomCeco')->nullable();
             $table->string('estado')->nullable()->default('ACTIVO');
