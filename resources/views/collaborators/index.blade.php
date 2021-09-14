@@ -84,7 +84,7 @@
                                             </a>
                                         @endcan
                                         @can('collaborators.destroy')
-                                        {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id, 'style'=>'display:inline;']) !!}
+                                        {!! Form::open(['route'=>['collaborators.destroy',$collaborator], 'method'=>'DELETE', 'id'=>'form_eliminar'.$collaborator->id, 'style'=>'display:inline;', 'onSubmit'=>'return confirm("¿Esta seguro de eliminar el colaborador?")']) !!}
                                         
                                             <button class="btn btn-danger btn-circle btn-sm" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>

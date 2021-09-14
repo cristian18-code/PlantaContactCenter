@@ -62,7 +62,7 @@
                                 <td>{{$role->description}}</td>
                                 <td style="width: 50px;">
                                     
-                                    {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE', 'id'=>'form_eliminar'.$role->id]) !!}
+                                    {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE', 'id'=>'form_eliminar'.$role->id, 'onSubmit'=>'return confirm("¿Esta seguro de eliminar el rol?")']) !!}
 
                                         <a class="btn btn-info btn-circle btn-sm" href="{{route('roles.edit', $role)}}" title="Editar">
                                             <i class="far fa-edit"></i>
