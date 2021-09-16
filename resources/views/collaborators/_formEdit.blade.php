@@ -197,6 +197,48 @@
                     </div>
                 </div>
             </div>
+            <div class="row col-md-12">
+                <div class="form-group row col-md-6">
+                    <label for="finContrato" class="col-md-4">Fecha retiro</label>
+                    <div class="col-md-8">
+                        <input id="finContrato" name="finContrato" class="@error('finContrato') is-invalid @enderror form-control" type="date" autocomplete="off" value="{{ old('finContrato', $collaborator->finContrato) }}">
+                        @error('finContrato')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('finContrato') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row col-md-6">
+                    <label for="motivoRetiro" class="col-md-4 col-form-label">Motivo de retiro</label>
+                    <div class="col-md-8">
+                        <select name="motivoRetiro" id="motivoRetiro" class="@error('motivoRetiro') is-invalid @enderror form-control">
+                            <option value="" hidden>Selecciona una opcion</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'Abandono de cargo') ? 'selected' : '' }} value="Abandono de cargo">Abandono de cargo</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'Ascenso') ? 'selected' : '' }} value="Ascenso">Ascenso</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'Cancelación Justa Causa') ? 'selected' : '' }} value="Cancelación Justa Causa">Cancelación Justa Causa</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'Cancelación sin Justa Causa') ? 'selected' : '' }} value="Cancelación sin Justa Causa">Cancelación sin Justa Causa</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'No Prorroga contrato') ? 'selected' : '' }} value="No Prorroga contrato">No Prorroga contrato</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'No supera periodo de prueba') ? 'selected' : '' }} value="No supera periodo de prueba">No supera periodo de prueba</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'Traslado') ? 'selected' : '' }} value="Traslado">Traslado</option>
+                            <option {{ (old('motivoRetiro', $collaborator->motivoRetiro) == 'Voluntario') ? 'selected' : '' }} value="Voluntario">Voluntario</option>
+                        </select>
+                        @error('motivoRetiro')
+                        <div class="alert alert-danger mt-2">
+                            <ul class="m-0">
+                                @foreach($errors->get('motivoRetiro') as $error)
+                                    <li> {{ $error }} </li>
+                                @endforeach
+                            </ul>        
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
         </div>
     </div>    
     <div class="col-md-12">

@@ -61,10 +61,17 @@ class CollaboratorController extends Controller
 
     public function show(Collaborator $collaborator)
     {
+        // prepaparacion de datos
         $collaborator->Fnacimiento = Carbon::parse($collaborator->Fnacimiento)->toFormattedDateString();
         $collaborator->edad = Carbon::createFromDate($collaborator->Fnacimiento)->age;
         $collaborator->sueldo = number_format($collaborator->sueldo);
         $collaborator->inf_medical = $collaborator->inf_medical;
+        $collaborator->familiers = $collaborator->familiers;
+        foreach ($collaborator->familiers as $familier) {
+            $familier->edad = Carbon::createFromDate($familier->fNacimiento)->age;
+        }
+        $collaborator->studies = $collaborator->studies;
+        // dd($collaborator->studies);
 
         return view('collaborators.show', compact('collaborator'));
     }

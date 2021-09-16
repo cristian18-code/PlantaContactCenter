@@ -23,6 +23,18 @@
                         class="list-group-item list-group-item-action">
                     Datos Medicos
                 </button>
+                <button type="button"
+                        @click="changeVisibility('familiares')"
+                        v-bind:class="[mostrarDatosFamiliares ? 'active' : '']"
+                        class="list-group-item list-group-item-action">
+                    Familiares
+                </button>
+                    <button type="button"
+                        @click="changeVisibility('estudios')"
+                        v-bind:class="[mostrarEstudios ? 'active' : '']"
+                        class="list-group-item list-group-item-action">
+                    Estudios
+                </button>
                 <a  href="#"
                     data-toggle="modal" data-target="#exampleModal"
                     v-bind:class="[collaborator.estado == 'ACTIVO' ? 'btn-success' : 'btn-danger']"
@@ -33,13 +45,17 @@
     </div>                   
     <datos-personales v-if="mostrarDatosPersonales" :colaborador="collaborator" />
     <datos-laborales v-if="mostrarDatosLaborales" :colaborador="collaborator" />
-    <datos-medicos v-if="mostrarDatosMedicos" :colaborador="collaborator" />     
+    <datos-medicos v-if="mostrarDatosMedicos" :colaborador="collaborator" />
+    <datos-familiares v-if="mostrarDatosFamiliares" :colaborador="collaborator" />
+    <estudios v-if="mostrarEstudios" :colaborador="collaborator" />
 </div>
 </template>
 <script>
     import DatosPersonales from "../../components/collaborator/DatosPersonalesComponent.vue";
     import DatosLaborales from "../../components/collaborator/DatosLaboralesComponent.vue";
     import DatosMedicos from "../../components/collaborator/DatosMedicos.vue";
+    import DatosFamiliares from "../../components/collaborator/DatosFamiliares.vue";
+    import Estudios from "../../components/collaborator/Estudios.vue";
 
     export default {
         mounted () {
@@ -50,13 +66,17 @@
         components: {
             DatosPersonales,
             DatosLaborales,
-            DatosMedicos
+            DatosMedicos,
+            DatosFamiliares,
+            Estudios
         },
         data: function(){            
             return {
                 mostrarDatosPersonales: true,
                 mostrarDatosLaborales: false,
                 mostrarDatosMedicos: false,
+                mostrarDatosFamiliares: false,
+                mostrarEstudios: false,
                 collaborator: JSON.parse(this.$attrs.colaborador),
             }
         },
@@ -75,21 +95,43 @@
                         this.mostrarDatosLaborales = true;
                         this.mostrarDatosPersonales = false;
                         this.mostrarDatosMedicos = false;
+                        this.mostrarDatosFamiliares = false;
+                        this.mostrarEstudios = false;
                         break;
                     case 'medicos':
                         this.mostrarDatosLaborales = false;
                         this.mostrarDatosPersonales = false;
                         this.mostrarDatosMedicos = true;
+                        this.mostrarDatosFamiliares = false;
+                        this.mostrarEstudios = false;
                         break;
                     case 'personales':
                         this.mostrarDatosLaborales = false;
                         this.mostrarDatosPersonales = true;
                         this.mostrarDatosMedicos = false;
+                        this.mostrarDatosFamiliares = false;
+                        this.mostrarEstudios = false;
+                        break;
+                    case 'familiares':
+                        this.mostrarDatosLaborales = false;
+                        this.mostrarDatosPersonales = false;
+                        this.mostrarDatosMedicos = false;
+                        this.mostrarDatosFamiliares = true;
+                        this.mostrarEstudios = false;
+                        break;
+                    case 'estudios':
+                        this.mostrarDatosLaborales = false;
+                        this.mostrarDatosPersonales = false;
+                        this.mostrarDatosMedicos = false;
+                        this.mostrarDatosFamiliares = false;
+                        this.mostrarEstudios = true;
                         break;
                     default:
                         this.mostrarDatosLaborales = false;
                         this.mostrarDatosPersonales = true;
                         this.mostrarDatosMedicos = false;
+                        this.mostrarDatosFamiliares = false;
+                        this.mostrarEstudios = false;
                         break;
                 }
             }
