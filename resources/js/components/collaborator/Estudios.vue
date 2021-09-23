@@ -1,8 +1,8 @@
 <template>
-<div class="col-lg-8 pl-lg-5">
+<div class="col-lg-9 pl-lg-5">
     <div class="justify-content-between mb-4">
         <div>
-            <h4 v-if="colaborador.studies.length != 0">Información Academica</h4>
+            <h4 v-if="colaborador.studies.length != 0" class="">Información Academica</h4>
             <h4 v-else>El colaborador no tiene estudios registrados</h4>
         </div>
     </div>    
@@ -48,8 +48,7 @@
 <script>
     export default {
         mounted () {
-            name: "Estudios",
-            console.log(this.colaborador.studies);
+            name: "Estudios"
         },
         props:{
             colaborador:{

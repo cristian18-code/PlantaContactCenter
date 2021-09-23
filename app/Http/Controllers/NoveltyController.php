@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Collaborator;
 use App\Novelty;
 use Illuminate\Http\Request;
 
 class NoveltyController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware('can:novelties')->except("index", 'show');
+    }
 
-    public function index()
-    {
-        //
+    public function showRelation(Request $request)
+    {   
+        $novelties = Novelty::all();
+        return response($novelties);
+        //Esta función nos devolvera todas las novelties que tenemos en nuestra BD
     }
 
     public function create()

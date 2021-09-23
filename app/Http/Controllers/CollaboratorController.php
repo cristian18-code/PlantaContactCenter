@@ -71,6 +71,7 @@ class CollaboratorController extends Controller
             $familier->edad = Carbon::createFromDate($familier->fNacimiento)->age;
         }
         $collaborator->studies = $collaborator->studies;
+        $collaborator->novelties = $collaborator->novelties;
         // dd($collaborator->studies);
 
         return view('collaborators.show', compact('collaborator'));

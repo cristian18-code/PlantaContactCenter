@@ -1,5 +1,5 @@
 <template>
-<div class="col-lg-8 pl-lg-5">
+<div class="col-lg-9 pl-lg-5">
     <div class="justify-content-between mb-4">
         <div>
             <h4 v-if="colaborador.familiers.length != 0">Información Familiar</h4>

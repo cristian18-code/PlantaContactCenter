@@ -1,6 +1,6 @@
 <template>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="border-bottom text-center pb-4" id="cont-image">        
             <div class="d-flex justify-content-between">
             </div>
@@ -8,32 +8,38 @@
         <div class="border-bottom py-4">
             <div class="list-group">
                 <button type="button"
-                        @click="changeVisibility('personales')"
-                        v-bind:class="[mostrarDatosPersonales ? 'active' : '']"
-                        class="list-group-item list-group-item-action">
+                    @click="changeVisibility('personales')"
+                    v-bind:class="[mostrarDatosPersonales ? 'active' : '']"
+                    class="list-group-item list-group-item-action">
                     Datos personales
                 </button>
                 <button type="button"
-                        @click="changeVisibility('laborales')"
-                        v-bind:class="[mostrarDatosLaborales ? 'active' : '']"
+                    @click="changeVisibility('laborales')"
+                    v-bind:class="[mostrarDatosLaborales ? 'active' : '']"
                     class="list-group-item list-group-item-action">Datos laborales</button>
                 <button type="button"
-                        @click="changeVisibility('medicos')"
-                        v-bind:class="[mostrarDatosMedicos ? 'active' : '']"
-                        class="list-group-item list-group-item-action">
+                    @click="changeVisibility('medicos')"
+                    v-bind:class="[mostrarDatosMedicos ? 'active' : '']"
+                    class="list-group-item list-group-item-action">
                     Datos Medicos
                 </button>
                 <button type="button"
-                        @click="changeVisibility('familiares')"
-                        v-bind:class="[mostrarDatosFamiliares ? 'active' : '']"
-                        class="list-group-item list-group-item-action">
+                    @click="changeVisibility('familiares')"
+                    v-bind:class="[mostrarDatosFamiliares ? 'active' : '']"
+                    class="list-group-item list-group-item-action">
                     Familiares
                 </button>
-                    <button type="button"
-                        @click="changeVisibility('estudios')"
-                        v-bind:class="[mostrarEstudios ? 'active' : '']"
-                        class="list-group-item list-group-item-action">
+                <button type="button"
+                    @click="changeVisibility('estudios')"
+                    v-bind:class="[mostrarEstudios ? 'active' : '']"
+                    class="list-group-item list-group-item-action">
                     Estudios
+                </button>
+                <button type="button"
+                    @click="changeVisibility('novedades')"
+                    v-bind:class="[mostrarNovedades ? 'active' : '']"
+                    class="list-group-item list-group-item-action">
+                    Novedades
                 </button>
                 <a  href="#"
                     data-toggle="modal" data-target="#exampleModal"
@@ -43,11 +49,12 @@
             </div>
         </div>
     </div>                   
-    <datos-personales v-if="mostrarDatosPersonales" :colaborador="collaborator" />
-    <datos-laborales v-if="mostrarDatosLaborales" :colaborador="collaborator" />
-    <datos-medicos v-if="mostrarDatosMedicos" :colaborador="collaborator" />
-    <datos-familiares v-if="mostrarDatosFamiliares" :colaborador="collaborator" />
-    <estudios v-if="mostrarEstudios" :colaborador="collaborator" />
+    <datos-personales v-show="mostrarDatosPersonales" :colaborador="collaborator" />
+    <datos-laborales v-show="mostrarDatosLaborales" :colaborador="collaborator" />
+    <datos-medicos v-show="mostrarDatosMedicos" :colaborador="collaborator" />
+    <datos-familiares v-show="mostrarDatosFamiliares" :colaborador="collaborator" />
+    <estudios v-show="mostrarEstudios" :colaborador="collaborator" />
+    <novedades v-show="mostrarNovedades" :colaborador="collaborator" />
 </div>
 </template>
 <script>
@@ -56,19 +63,16 @@
     import DatosMedicos from "../../components/collaborator/DatosMedicos.vue";
     import DatosFamiliares from "../../components/collaborator/DatosFamiliares.vue";
     import Estudios from "../../components/collaborator/Estudios.vue";
+    import Novedades from "./novelties/Novedades.vue";
 
     export default {
-        mounted () {
-            name: "Datos"
-            this.mounted_image();
-            console.log(this.collaborator);
-        },
         components: {
             DatosPersonales,
             DatosLaborales,
             DatosMedicos,
             DatosFamiliares,
-            Estudios
+            Estudios,
+            Novedades
         },
         data: function(){            
             return {
@@ -77,6 +81,7 @@
                 mostrarDatosMedicos: false,
                 mostrarDatosFamiliares: false,
                 mostrarEstudios: false,
+                mostrarNovedades: false,
                 collaborator: JSON.parse(this.$attrs.colaborador),
             }
         },
@@ -97,6 +102,7 @@
                         this.mostrarDatosMedicos = false;
                         this.mostrarDatosFamiliares = false;
                         this.mostrarEstudios = false;
+                        this.mostrarNovedades = false;
                         break;
                     case 'medicos':
                         this.mostrarDatosLaborales = false;
@@ -104,6 +110,7 @@
                         this.mostrarDatosMedicos = true;
                         this.mostrarDatosFamiliares = false;
                         this.mostrarEstudios = false;
+                        this.mostrarNovedades = false;
                         break;
                     case 'personales':
                         this.mostrarDatosLaborales = false;
@@ -111,6 +118,7 @@
                         this.mostrarDatosMedicos = false;
                         this.mostrarDatosFamiliares = false;
                         this.mostrarEstudios = false;
+                        this.mostrarNovedades = false;
                         break;
                     case 'familiares':
                         this.mostrarDatosLaborales = false;
@@ -118,6 +126,7 @@
                         this.mostrarDatosMedicos = false;
                         this.mostrarDatosFamiliares = true;
                         this.mostrarEstudios = false;
+                        this.mostrarNovedades = false;
                         break;
                     case 'estudios':
                         this.mostrarDatosLaborales = false;
@@ -125,6 +134,15 @@
                         this.mostrarDatosMedicos = false;
                         this.mostrarDatosFamiliares = false;
                         this.mostrarEstudios = true;
+                        this.mostrarNovedades = false;
+                        break;
+                    case 'novedades':
+                        this.mostrarDatosLaborales = false;
+                        this.mostrarDatosPersonales = false;
+                        this.mostrarDatosMedicos = false;
+                        this.mostrarDatosFamiliares = false;
+                        this.mostrarEstudios = false;
+                        this.mostrarNovedades = true;
                         break;
                     default:
                         this.mostrarDatosLaborales = false;
@@ -132,9 +150,15 @@
                         this.mostrarDatosMedicos = false;
                         this.mostrarDatosFamiliares = false;
                         this.mostrarEstudios = false;
+                        this.mostrarNovedades = false;
                         break;
                 }
             }
+        },
+        mounted () {
+            name: "Datos"
+            this.mounted_image();
+            // console.log(this.collaborator);
         }
     }
 </script>

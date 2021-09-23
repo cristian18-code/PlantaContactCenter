@@ -24,6 +24,13 @@ Route::middleware(['auth'])->group(function () {
     Route::put('change_status/collaborators/{collaborator}', 'CollaboratorController@change_status')->name('collaborators.change_status');
     Route::get('export/collaborators', 'CollaboratorController@export')->name('collaborators.export');
 
+    // novelties Api
+    Route::get('novelties/{collaborator}', 'NoveltyController@showRelation');
+    Route::put('novelties/actualizar', 'NoveltyController@update');
+    Route::post('collaborators/novelties/guardar', 'NoveltyController@store');
+    Route::delete('collaborators/novelties/borrar/{id}', 'NoveltyController@destroy');
+    Route::get('collaborators/novelties/buscar', 'NoveltyController@show');
+
     // users
     Route::resource('/users', 'UserController')->except('show')->names('users');
     Route::resource('/roles', 'RoleController')->except('show')->names('roles');

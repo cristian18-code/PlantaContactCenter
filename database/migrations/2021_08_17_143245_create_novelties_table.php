@@ -19,10 +19,10 @@ class CreateNoveltiesTable extends Migration
             $table->unsignedBigInteger('collaborator_id');
             $table->foreign('collaborator_id')->references('id')->on('collaborators');
             $table->string('novedad', 255);
-            $table->date('Finicio');
-            $table->date('Ffin')->nullable();
+            $table->dateTime('Finicio');
+            $table->dateTime('Ffin')->nullable();
             $table->string('observaciones')->nullable();
-            $table->enum('estado', ['segumiento', 'cerrado'])->default('segumiento');
+            $table->enum('estado', ['En curso', 'Cerrada'])->default('En curso');
 
             $table->timestamps();
         });

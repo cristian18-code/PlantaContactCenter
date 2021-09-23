@@ -75,7 +75,7 @@
                                 </td>
                                 <td>{{$collaborator->campania}}</td>
                                 <td>{{$collaborator->cargoNomina}}</td>
-                                <td><span class="badge rounded-pill color-white @if($collaborator->estado == 'ACTIVO') bg-success @elseif($collaborator->estado == 'INCAPACIDAD' || $collaborator->estado == 'VACACIONES' || $collaborator->estado == 'AUSENTE') bg-warning @else bg-danger @endif">{{$collaborator->estado}}</span></td>
+                                <td><span class="badge @if($collaborator->estado == 'ACTIVO') bg-success @elseif($collaborator->estado == 'INCAPACIDAD' || $collaborator->estado == 'VACACIONES' || $collaborator->estado == 'AUSENTE') bg-warning @else bg-danger @endif">{{$collaborator->estado}} <i class="@if($collaborator->estado == 'ACTIVO') fas fa-check @else fas fa-times @endif"></i></span></td>
                                 @if(Gate::check('collaborators.edit') || Gate::check('collaborators.destroy'))
                                     <td style="width: 50px; text-align: center;">
                                         @can('collaborators.edit')

@@ -1,5 +1,5 @@
 <template>
-<div class="col-lg-8 pl-lg-5">
+<div class="col-lg-9 pl-lg-5">
     <div class="d-flex justify-content-between mb-4">
         <div>
             <h4>Información Laboral</h4>

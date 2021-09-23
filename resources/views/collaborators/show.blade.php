@@ -12,7 +12,11 @@
     #cont-image img {
         max-width: 150px;
     }
+    table tbody#tbody-novelties td, table tbody#tbody-novelties td span.badge{
+        font-size: 1rem;
+    }
 </style>
+{!! Html::style('public/sb-admin-2/vendor/datatables/dataTables.bootstrap4.css') !!}
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -80,5 +84,8 @@
 @endcan
 @endsection
 @section('scripts')
-    {!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
+{!! Html::script('public/sb-admin-2/vendor/sweetalert2/sweetalert2.js') !!}
+{!! Html::script('public/media/js/datatables/renderTable.js') !!}
+{!! Html::script('public/media/js/datatables/jquery.dataTables.min.js') !!}
+{!! Html::script('public/sb-admin-2/vendor/datatables/dataTables.bootstrap4.js') !!} 
 @endsection
