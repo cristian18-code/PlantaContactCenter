@@ -25,12 +25,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('export/collaborators', 'CollaboratorController@export')->name('collaborators.export');
 
     // novelties Api
-    Route::get('novelties/{collaborator}', 'NoveltyController@showRelation');
-    Route::put('novelties/actualizar', 'NoveltyController@update');
-    Route::post('collaborators/novelties/guardar', 'NoveltyController@store');
-    Route::delete('collaborators/novelties/borrar/{id}', 'NoveltyController@destroy');
-    Route::get('collaborators/novelties/buscar', 'NoveltyController@show');
-
+    Route::get('novelties/{collaborator}', 'NoveltyController@showRelation')->prefix('api');
+    Route::put('novelties/actualizar', 'NoveltyController@update')->prefix('api');
+    Route::post('novelties/guardar', 'NoveltyController@store')->prefix('api');
+    Route::delete('novelties/borrar/{id}', 'NoveltyController@destroy')->prefix('api');
+    Route::get('novelties/buscar', 'NoveltyController@show')->prefix('api');
+    
     // users
     Route::resource('/users', 'UserController')->except('show')->names('users');
     Route::resource('/roles', 'RoleController')->except('show')->names('roles');
