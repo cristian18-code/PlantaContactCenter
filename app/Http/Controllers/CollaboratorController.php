@@ -84,11 +84,10 @@ class CollaboratorController extends Controller
 
     public function update(UpdateRequest $request, Collaborator $collaborator)
     {
-        // dd($request->all());
         // requests
         $collaborator_request = $request->except('estado', 'nivel', 'titulo', 'nombre_familier', 'fNacimiento_familier', 'genero_familier', 'ocupacion_familier', 'celular_familier', 'parentesco_familier');
         // requests
-        // registrar colaboreadores 
+        // registrar colaboradores 
         if($request->hasFile('picture')){
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
