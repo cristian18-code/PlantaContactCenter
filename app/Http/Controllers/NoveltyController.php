@@ -4,30 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Collaborator;
 use App\Novelty;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class NoveltyController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-        $this->middleware('can:novelties')->except("index", 'show');
-    }
 
-    public function showRelation(Request $request)
-    {   
-        $novelties = Novelty::all();
-        return response($novelties);
+
+    public function showRelation(Request $request, Collaborator $collaborator)
+    {           
+        $novelties = $collaborator->novelties;
+        return response()->json($novelties, 200);
         //Esta función nos devolvera todas las novelties que tenemos en nuestra BD
-    }
-
-    public function create()
-    {
-        //
     }
 
     public function store(Request $request)
     {
-        //
+        // return Carbon::parse();
+        $novelty = new Novelty();
+        $novelty->collaborator_id = $request->collaborator_id;
+        $novelty->novedad = $request->novedad;
+        $novelty->Finicio = Carbon::parse($request->Finicio);
+        $novelty->Ffin = Carbon::parse($request->Finicio);;
+        $novelty->observaciones = $request->observaciones;
+        $novelty->save();
+        return response()->json($novelty, 201);
     }
 
     public function show(Novelty $novelty)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Novelty extends Model
 {
     protected $fillable = [
-        'novedad', 'Finicio', 'Ffin', 'observaciones', 'estado'
+        'collaborator_id', 'novedad', 'Finicio', 'Ffin', 'observaciones', 'estado'
     ];
 
     public function collaborator()
