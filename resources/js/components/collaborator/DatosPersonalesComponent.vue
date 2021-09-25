@@ -10,29 +10,29 @@
             <div class="form-group col-md-6">
                 <strong><i class="fas fa-address-card mr-1"></i>Numero de cedula</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.cedula }} 
+                    {{ $parent.collaborator.cedula }} 
                 </p>
                 <hr>
                 <strong><i class="far fa-calendar-alt mr-1"></i> Fecha de nacimiento</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.Fnacimiento }} 
+                    {{ $parent.collaborator.Fnacimiento }} 
                 </p>
                 <hr>
                 <strong><i class="fas fa-pager mr-1"></i> Edad</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.edad }} años
+                    {{ $parent.collaborator.edad }} años
                 </p>
                 <hr>
                 <strong><i class="fas fa-venus-mars mr-1"></i>Genero</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.genero }} 
+                    {{ $parent.collaborator.genero }} 
                 </p>
                 <hr>
                 <strong>
                     <i class="fas fa-child mr-1"></i>
                     ¿Tiene hijos?</strong>
                     <p class="text-muted mt-2">
-                        {{ colaborador.hijos }} 
+                        {{ $parent.collaborator.hijos }} 
                     </p>
                 <hr>
             </div>
@@ -41,29 +41,29 @@
                     <i class="fas fa-phone mr-1"></i>
                     Celular</strong>
                     <p class="text-muted mt-2">
-                        {{ colaborador.celular }} 
+                        {{ $parent.collaborator.celular }} 
                     </p>
                 <hr>
                 <strong>
                     <i class="fas fa-at mr-1"></i>
                     Correo</strong>
                     <p class="text-muted mt-2">
-                        {{ colaborador.correo }} 
+                        {{ $parent.collaborator.correo }} 
                     </p>
                 <hr>
                 <strong><i class="fas fa-home mr-1"></i>Estrato</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.estrato }}
+                    {{ $parent.collaborator.estrato }}
                 </p>
                 <hr>
                 <strong><i class="fas fa-map-marked-alt mr-1"></i> localidad</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.localidad }}
+                    {{ $parent.collaborator.localidad }}
                 </p>
                 <hr>
                 <strong><i class="fas fa-map-marker-alt mr-1"></i>Barrio</strong>
                 <p class="text-muted mt-2">
-                    {{ colaborador.barrio }}
+                    {{ $parent.collaborator.barrio }}
                 </p>
                 <hr>
             </div>
@@ -76,12 +76,6 @@
     export default {
         mounted () {
             name: "DatosPersonales"
-        },
-        props:{
-            colaborador:{
-                type: Object,
-                default: 'undefined'
-            }
         }
     }
 </script>

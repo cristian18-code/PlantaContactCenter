@@ -2,11 +2,11 @@
 <div class="col-lg-9 pl-lg-5">
     <div class="justify-content-between mb-4">
         <div>
-            <h4 v-if="colaborador.studies.length != 0" class="">Información Academica</h4>
+            <h4 v-if="$parent.collaborator.studies.length != 0" class="">Información Academica</h4>
             <h4 v-else>El colaborador no tiene estudios registrados</h4>
         </div>
     </div>    
-    <div v-for="studie in colaborador.studies" :key="studie.id">
+    <div v-for="studie in $parent.collaborator.studies" :key="studie.id">
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
             <a :href="'#collapseStudie'+studie.id" class="d-block card-header py-3" data-toggle="collapse"
@@ -49,12 +49,6 @@
     export default {
         mounted () {
             name: "Estudios"
-        },
-        props:{
-            colaborador:{
-                type: Object,
-                default: 'undefined'
-            }
         }
     }
 </script>

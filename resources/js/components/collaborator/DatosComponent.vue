@@ -39,7 +39,7 @@
                     @click="changeVisibility('novedades')"
                     v-bind:class="[mostrarNovedades ? 'active' : '']"
                     class="list-group-item list-group-item-action">
-                    Novedades
+                    Gestionar novedades
                 </button>
                 <a  href="#"
                     data-toggle="modal" data-target="#exampleModal"
@@ -49,12 +49,12 @@
             </div>
         </div>
     </div>                   
-    <datos-personales v-show="mostrarDatosPersonales" :colaborador="collaborator" />
-    <datos-laborales v-show="mostrarDatosLaborales" :colaborador="collaborator" />
-    <datos-medicos v-show="mostrarDatosMedicos" :colaborador="collaborator" />
-    <datos-familiares v-show="mostrarDatosFamiliares" :colaborador="collaborator" />
-    <estudios v-show="mostrarEstudios" :colaborador="collaborator" />
-    <novedades v-show="mostrarNovedades" :colaborador="collaborator" />
+    <datos-personales v-show="mostrarDatosPersonales" />
+    <datos-laborales v-show="mostrarDatosLaborales" />
+    <datos-medicos v-show="mostrarDatosMedicos" />
+    <datos-familiares v-show="mostrarDatosFamiliares" />
+    <estudios v-show="mostrarEstudios"/>
+    <novedades v-show="mostrarNovedades"/>
 </div>
 </template>
 <script>
