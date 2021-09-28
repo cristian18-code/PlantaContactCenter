@@ -14,16 +14,16 @@
                     </tr>
                 </thead>
                 <tbody id="tbody-novelties">
-                    <tr v-for="noveltie in $parent.arrayNovelties" :key="noveltie.id">
-                        <th scope="row">{{ noveltie.id }}</th>
+                    <tr v-for="novelty in $parent.arrayNovelties" :key="novelty.id">
+                        <th scope="row">{{ novelty.id }}</th>
                         <td>
-                            <a href="#">{{noveltie.novedad}}</a>
+                            <a href="#">{{novelty.novedad}}</a>
                         </td>
-                        <td><span v-bind:class="[noveltie.estado == 'En curso' ? 'bg-success' : 'bg-danger']" class="badge color-white">{{noveltie.estado}}</span></td>
-                        <td>{{new Date(noveltie.Finicio).toLocaleDateString()}}</td>
-                        <td>{{new Date(noveltie.Ffin).toLocaleDateString()}}</td>
+                        <td><span v-bind:class="[novelty.estado == 'En curso' ? 'bg-success' : 'bg-danger']" class="badge color-white">{{novelty.estado}}</span></td>
+                        <td>{{new Date(novelty.Finicio).toLocaleDateString()}}</td>
+                        <td>{{new Date(novelty.Ffin).toLocaleDateString()}}</td>
                         <td>
-                            <a class="btn btn-info btn-circle btn-sm" href="#" title="Editar">
+                            <a class="btn btn-info btn-circle btn-sm" @click="$parent.loadFieldsUpdate(novelty); $parent.currentModule = 'edit-noveltie'" title="Editar">
                                 <i class="far fa-edit"></i>
                             </a>
                         </td>
@@ -35,6 +35,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     mounted () {
         name: "Table"

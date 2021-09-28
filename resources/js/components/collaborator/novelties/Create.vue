@@ -33,8 +33,7 @@
 import axios from 'axios';
 export default {
     mounted () {
-        name: "Create",
-        console.log(this.$parent.colaborador.id);
+        name: "Create"
     },
     data(){
         return {

@@ -26,10 +26,10 @@ Route::middleware(['auth'])->group(function () {
 
     // novelties Api
     Route::get('novelties/{collaborator}', 'NoveltyController@showRelation')->prefix('api');
-    Route::put('novelties/actualizar', 'NoveltyController@update')->prefix('api');
+    Route::put('novelties/actualizar/{novelty}', 'NoveltyController@update')->prefix('api');
     Route::post('novelties/guardar', 'NoveltyController@store')->prefix('api');
     Route::delete('novelties/borrar/{id}', 'NoveltyController@destroy')->prefix('api');
-    Route::get('novelties/buscar', 'NoveltyController@show')->prefix('api');
+    Route::get('novelties/buscar/{novelty}', 'NoveltyController@edit')->prefix('api');
     
     // users
     Route::resource('/users', 'UserController')->except('show')->names('users');

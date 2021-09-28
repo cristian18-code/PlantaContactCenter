@@ -33,13 +33,25 @@
                 modules:[
                     'table-novelties',
                     'create-noveltie'
-                ]
+                ],
+                noveltyUpdate: {}
             }
         },
-        methods:{
+        methods: {
+            loadFieldsUpdate(data){
+                let me =this;
+                let url = '../api/novelties/buscar/'+data.id;
+                axios.get(url).then(function (response) {
+                    me.noveltyUpdate=response.data;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                }); 
+            },
             getNovelties(){
                 let me =this;
-                let url = '../api/novelties/'+me.$parent.collaborator.id //Ruta que hemos creado para que nos devuelva las novedades
+                let url = '../api/novelties/'+me.colaborador.id //Ruta que hemos creado para que nos devuelva las novedades
                 axios.get(url).then(function (response) {
                     //creamos un array y guardamos el contenido que nos devuelve el response
                     me.arrayNovelties = response.data;
@@ -49,37 +61,21 @@
                     console.log(error);
                 });
             },
-            // updateTasks(){/*Esta funcion, es igual que la anterior, solo que tambien envia la variable update que contiene el id de la
-            //     tarea que queremos modificar*/
-            //     let me = this;
-            //     axios.put('/tareas/actualizar',{
-            //         'id':this.update,
-            //         'name':this.name,
-            //         'description':this.description,
-            //         'content':this.content,
-            //     }).then(function (response) {
-            //        me.getTasks();//llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
-            //        me.clearFields();//Limpiamos los campos e inicializamos la variable update a 0
-            //     })
-            //     .catch(function (error) {
-            //         console.log(error);
-            //     });
-            // },
-            // loadFieldsUpdate(data){ //Esta función rellena los campos y la variable update, con la tarea que queremos modificar
-            //     this.update = data.id
-            //     let me =this;
-            //     let url = '/tareas/buscar?id='+this.update;
-            //     axios.get(url).then(function (response) {
-            //         me.name= response.data.name;
-            //         me.description= response.data.description;
-            //         me.content= response.data.content;
-
-            //     })
-            //     .catch(function (error) {
-            //         // handle error
-            //         console.log(error);
-            //     }); 
-            // },
+            updateNoveltie(){
+                let me = this;
+                axios.put('../api/novelties/actualizar/'+me.noveltyUpdate.id,this.noveltyUpdate).then(function (response) {
+                   me.getNovelties();
+                    Swal.fire(
+                        '¡Exito!',
+                        'Se ha modificado la novedad: ' +response.data.id,
+                        'success'
+                    );
+                   console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
             // deleteTask(data){//Esta nos abrirá un alert de javascript y si aceptamos borrará la tarea que hemos elegido
             //     let me =this;
             //     let task_id = data.id
@@ -97,7 +93,6 @@
             //     this.name = "";
             //     this.description = "";
             //     this.content = "";
-            //     this.update = 0;
             // }
         },
         beforeMount() {

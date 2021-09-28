@@ -10,6 +10,7 @@ Vue.component('estudios', require('./components/collaborator/Estudios.vue').defa
 Vue.component('novedades', require('./components/collaborator/novelties/Novedades.vue').default);
 Vue.component('table-novelties', require('./components/collaborator/novelties/Table.vue').default);
 Vue.component('create-noveltie', require('./components/collaborator/novelties/Create.vue').default);
+Vue.component('edit-noveltie', require('./components/collaborator/novelties/Edit.vue').default);
 
 const app = new Vue({
     el: '#app',
